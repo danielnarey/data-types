@@ -6,9 +6,8 @@ const dataTransform = require('./src/data-transform');
 
 
 module.exports = {
-  ...checkSync,
-  ...typeConvert,
-  ...dataImport,
-  ...dataExport,
-  ...dataTransform
+  checkSync,
+  checkAsync,
+  convertSync,
+  convertAsync,
 };

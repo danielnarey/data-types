@@ -2,7 +2,7 @@
 
 whatType
 
-resolve_whatType
+resolveWhatType
 
 ---
 
@@ -12,11 +12,11 @@ isPrimitiveArray
 
 isTypedArray
 
-resolve_isPrimitive
+resolveIsPrimitive
 
-resolve_isPrimitiveArray
+resolveIsPrimitiveArray
 
-resolve_isTypedArray
+resolveIsTypedArray
 
 ---
 

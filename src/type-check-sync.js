@@ -28,7 +28,7 @@ const isPrimitive = type => value => {
 
 // INTERNAL
 // [*] => boolean
-const isTypedArray = type => array => {
+const isPrimitiveArray = type => array => {
   try {
     if (whatType(array) !== 'Array') {
       return false;
@@ -43,31 +43,7 @@ const isTypedArray = type => array => {
 
 // EXPOSED: MODULE, PACKAGE
 // [*] => boolean
-const isDataTable = dt => {
-  if (whatType(dt) !== 'Object') {
-    return false;
-  }
-
-  const keys = Object.keys(dt);
-
-  if (keys.length === 0) {
-    return false;
-  }
-
-  const valueTypes = keys.map(k => whatType(dt[k]));
-
-  if (!valueTypes.every(x => (x === 'Array'))) {
-    return false;
-  }
-
-  const arrayLengths = keys.map(k => dt[k].length);
-
-  if (!arrayLengths.every(x => (x === arrayLengths[0]))) {
-    return false;
-  }
-
-  return true;
-};
+const isTypedArray = 
 
 
 module.exports = {
@@ -79,10 +55,11 @@ module.exports = {
   isFunction: isPrimitive('Function'),
   isObject: isPrimitive('Object'),
   isArray: isPrimitive('Array'),
-  isStringArray: isTypedArray('String'),
-  isNumberArray: isTypedArray('Number'),
-  isBooleanArray: isTypedArray('Boolean'),
-  isDateArray: isTypedArray('Date'),
-  isFunctionArray: isTypedArray('Function'),
-  isDataTable,
+  isStringArray: isPrimitiveArray('String'),
+  isNumberArray: x => isTypedArray(x) || isPrimitiveArray('Number')(x),
+  isBooleanArray: isPrimitiveArray('Boolean'),
+  isDateArray: isPrimitiveArray('Date'),
+  isFunctionArray: isPrimitiveArray('Function'),
+  isObjectArray: isPrimitiveArray('Object'),
+  isTypedArray, 
 };
