@@ -5,18 +5,6 @@ const { whatType } = require('./type-check-sync');
 
 // INTERNAL
 // [*] => promise<boolean>
-const isPrimitive = type => async (promise) => {
-  try {
-    const value = await promise;
-    return whatType(value) === type;
-  } catch {
-    return false;
-  }
-};
-
-
-// INTERNAL
-// [*] => promise<boolean>
 const isRejected = async (promise) => {
   if (whatType(promise) !== 'Promise') {
     return false;
@@ -32,8 +20,21 @@ const isRejected = async (promise) => {
 
 
 // INTERNAL
+// string => [*] => promise<boolean>
+const isPrimitive = type => async (promise) => {
+  try {
+    const value = await promise;
+    
+    return whatType(value) === type;
+  } catch {
+    return false;
+  }
+};
+
+
+// INTERNAL
 // [*] => promise<boolean>
-const isTypedArray = type => async (promise) => {
+const isPrimitiveArray = type => async (promise) => {
   try {
     const array = await promise;
   
@@ -42,6 +43,35 @@ const isTypedArray = type => async (promise) => {
     }
   
     return array.every(x => whatType(x) === type);
+  } catch {
+    return false;
+  }
+};
+
+
+// EXPOSED: MODULE, PACKAGE
+// [*] => promise<boolean>
+const isTypedArray = (type = null) => async (promise) => {
+  const bufferTypes = [
+    'Int8Array',
+    'Uint8Array',
+    'Uint8ClampedArray',
+    'Int16Array',
+    'Uint16Array',
+    'Int32Array',
+    'Uint32Array',
+    'Float32Array',
+    'Float64Array',
+    'BigInt64Array',
+    'BigUint64Array',
+  ];
+  
+  const test = !type ? x => bufferTypes.includes(whatType(x)) : x => whatType(x) === type;
+  
+  try {
+    const array = await promise;
+    
+    return test(array);
   } catch {
     return false;
   }
@@ -80,15 +110,19 @@ const isDataTable = async (promise) => {
 
 
 module.exports = {
+  isRejected,
   isString: isPrimitive('String'),
   isNumber: isPrimitive('Number'),
   isBoolean: isPrimitive('Boolean'),
+  isDate: isPrimitive('Date'),
   isFunction: isPrimitive('Function'),
   isObject: isPrimitive('Object'),
   isArray: isPrimitive('Array'),
-  isStringArray: isTypedArray('String'),
-  isNumberArray: isTypedArray('Number'),
-  isBooleanArray: isTypedArray('Boolean'),
-  isFunctionArray: isTypedArray('Function'),
-  isDataTable,
+  isStringArray: isPrimitiveArray('String'),
+  isNumberArray: isPrimitiveArray('Number'),
+  isBooleanArray: isPrimitiveArray('Boolean'),
+  isDateArray: isPrimitiveArray('Date'),
+  isFunctionArray: isPrimitiveArray('Function'),
+  isObjectArray: isPrimitiveArray('Object'),
+  isTypedArray,
 };
