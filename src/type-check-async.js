@@ -12,6 +12,7 @@ const isRejected = async (promise) => {
   
   try {
     await promise;
+    
     return false;
   } catch {
     return true;
@@ -21,7 +22,7 @@ const isRejected = async (promise) => {
 
 // INTERNAL
 // string => [*] => promise<boolean>
-const isPrimitive = type => async (promise) => {
+const isPrototype = type => async (promise) => {
   try {
     const value = await promise;
     
@@ -34,7 +35,7 @@ const isPrimitive = type => async (promise) => {
 
 // INTERNAL
 // [*] => promise<boolean>
-const isPrimitiveArray = type => async (promise) => {
+const isPrototypeArray = type => async (promise) => {
   try {
     const array = await promise;
   
@@ -51,7 +52,7 @@ const isPrimitiveArray = type => async (promise) => {
 
 // EXPOSED: MODULE, PACKAGE
 // [*] => promise<boolean>
-const isTypedArray = (type = null) => async (promise) => {
+const isAnyTypedArray = promise => {
   const bufferTypes = [
     'Int8Array',
     'Uint8Array',
@@ -66,63 +67,119 @@ const isTypedArray = (type = null) => async (promise) => {
     'BigUint64Array',
   ];
   
-  const test = !type ? x => bufferTypes.includes(whatType(x)) : x => whatType(x) === type;
-  
   try {
-    const array = await promise;
+    const obj = await promise;
     
-    return test(array);
+    return bufferTypes.includes(whatType(obj));
   } catch {
     return false;
   }
 };
- 
+
 
 // EXPOSED: MODULE, PACKAGE
 // [*] => promise<boolean>
-const isDataTable = async (promise) => {
-  const dt = await promise;
-
-  if (whatType(dt) !== 'Object') {
+const isIntTypedArray = promise => {
+  const bufferTypes = [
+    'Int8Array',
+    'Uint8Array',
+    'Uint8ClampedArray',
+    'Int16Array',
+    'Uint16Array',
+    'Int32Array',
+    'Uint32Array',
+  ];
+  
+  try {
+    const obj = await promise;
+    
+    return bufferTypes.includes(whatType(obj));
+  } catch {
     return false;
   }
+};
 
-  const keys = Object.keys(dt);
 
-  if (keys.length === 0) {
+// EXPOSED: MODULE, PACKAGE
+// [*] => promise<boolean>
+const isUintTypedArray = promise => {
+  const bufferTypes = [
+    'Uint8Array',
+    'Uint8ClampedArray',
+    'Uint16Array',
+    'Uint32Array',
+  ];
+  
+  try {
+    const obj = await promise;
+    
+    return bufferTypes.includes(whatType(obj));
+  } catch {
     return false;
   }
+};
 
-  const valueTypes = keys.map(k => whatType(dt[k]));
 
-  if (!valueTypes.every(x => (x === 'Array'))) {
+// EXPOSED: MODULE, PACKAGE
+// [*] => promise<boolean>
+const isFloatTypedArray = promise => {
+  const bufferTypes = [
+    'Float32Array',
+    'Float64Array',
+  ];
+  
+  try {
+    const obj = await promise;
+    
+    return bufferTypes.includes(whatType(obj));
+  } catch {
     return false;
   }
+};
 
-  const arrayLengths = keys.map(k => dt[k].length);
 
-  if (!arrayLengths.every(x => (x === arrayLengths[0]))) {
+// EXPOSED: MODULE, PACKAGE
+// [*] => promise<boolean>
+const isBigIntTypedArray = promise => {
+  const bufferTypes = [
+    'BigInt64Array',
+    'BigUint64Array',
+  ];
+  
+  try {
+    const obj = await promise;
+    
+    return bufferTypes.includes(whatType(obj));
+  } catch {
     return false;
   }
-
-  return true;
 };
 
 
 module.exports = {
   isRejected,
-  isString: isPrimitive('String'),
-  isNumber: isPrimitive('Number'),
-  isBoolean: isPrimitive('Boolean'),
-  isDate: isPrimitive('Date'),
-  isFunction: isPrimitive('Function'),
-  isObject: isPrimitive('Object'),
-  isArray: isPrimitive('Array'),
-  isStringArray: isPrimitiveArray('String'),
-  isNumberArray: isPrimitiveArray('Number'),
-  isBooleanArray: isPrimitiveArray('Boolean'),
-  isDateArray: isPrimitiveArray('Date'),
-  isFunctionArray: isPrimitiveArray('Function'),
-  isObjectArray: isPrimitiveArray('Object'),
-  isTypedArray,
+  isString: isPrototype('String'),
+  isNumber: isPrototype('Number'),
+  isBoolean: isPrototype('Boolean'),
+  isSymbol: isPrototype('Symbol'),
+  isDate: isPrototype('Date'),
+  isRegExp: isPrototype('RegExp'),
+  isFunction: isPrototype('Function'),
+  isObject: isPrototype('Object'),
+  isArray: isPrototype('Array'),
+  isSet: isPrototype('Set'),
+  isMap: isPrototype('Map'),
+  isWeakSet: isPrototype('WeakSet'),
+  isWeakMap: isPrototype('WeakMap'),
+  isStringArray: isPrototypeArray('String'),
+  isNumberArray: isPrototypeArray('Number'),
+  isBooleanArray: isPrototypeArray('Boolean'),
+  isDateArray: isPrototypeArray('Date'),
+  isFunctionArray: isPrototypeArray('Function'),
+  isObjectArray: isPrototypeArray('Object'),
+  isAnyTypedArray,
+  isIntTypedArray,
+  isUintTypedArray,
+  isFloatTypedArray,
+  isBigIntTypedArray,
 };
