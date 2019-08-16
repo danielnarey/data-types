@@ -43,7 +43,7 @@ const isPrototypeArray = type => array => {
 
 // EXPOSED: MODULE, PACKAGE
 // [*] => boolean
-const isAnyTypedArray = obj => {
+const isTypedArray = obj => {
   const bufferTypes = [
     'Int8Array',
     'Uint8Array',
@@ -158,7 +158,7 @@ module.exports = {
   isDateArray: isPrototypeArray('Date'),
   isFunctionArray: isPrototypeArray('Function'),
   isObjectArray: isPrototypeArray('Object'),
-  isAnyTypedArray,
+  isTypedArray,
   isIntTypedArray,
   isUintTypedArray,
   isFloatTypedArray,

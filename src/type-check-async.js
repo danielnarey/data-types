@@ -52,7 +52,7 @@ const isPrototypeArray = type => async (promise) => {
 
 // EXPOSED: MODULE, PACKAGE
 // [*] => promise<boolean>
-const isAnyTypedArray = async (promise) => {
+const isTypedArray = async (promise) => {
   const bufferTypes = [
     'Int8Array',
     'Uint8Array',
@@ -177,7 +177,7 @@ module.exports = {
   isDateArray: isPrototypeArray('Date'),
   isFunctionArray: isPrototypeArray('Function'),
   isObjectArray: isPrototypeArray('Object'),
-  isAnyTypedArray,
+  isTypedArray,
   isIntTypedArray,
   isUintTypedArray,
   isFloatTypedArray,
