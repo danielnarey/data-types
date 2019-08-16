@@ -88,7 +88,7 @@ test('isString', async (t) => {
   t.false(checkSync.isString(undef));
   t.false(checkSync.isString(pUndef));
   
-  t.throwsAsync(async () => await checkSync.isString(pReject));
+  t.throws(() => checkSync.isString(pReject));
 });
 
 
@@ -219,7 +219,7 @@ test('isStringArray', async (t) => {
   t.false(checkSync.isStringArray(pNll));
   t.false(checkSync.isStringArray(undef));
   t.false(checkSync.isStringArray(pUndef));
-  t.throwsAsync(async () => await checkSync.isString(pReject));;
+  t.throws(() => checkSync.isString(pReject));
 });
 
 
