@@ -166,7 +166,7 @@ test('isArray', async (t) => {
 
 test('isSet', async (t) => {
   t.true(await checkAsync.isSet(set));
-  t.true(await checkAsync.isSet(set));
+  t.true(await checkAsync.isSet(pSet));
   
   t.false(await checkAsync.isSet(arr));
   t.false(await checkAsync.isSet(pArr));
@@ -175,7 +175,7 @@ test('isSet', async (t) => {
 
 test('isMap', async (t) => {
   t.true(await checkAsync.isMap(map));
-  t.true(await checkAsync.isMap(map));
+  t.true(await checkAsync.isMap(pMap));
   
   t.false(await checkAsync.isMap(arr));
   t.false(await checkAsync.isMap(pArr));
@@ -184,7 +184,7 @@ test('isMap', async (t) => {
 
 test('isWeakSet', async (t) => {
   t.true(await checkAsync.isWeakSet(wset));
-  t.true(await checkAsync.isWeakSet(wset));
+  t.true(await checkAsync.isWeakSet(pWset));
   
   t.false(await checkAsync.isWeakSet(set));
   t.false(await checkAsync.isWeakSet(pSet));
