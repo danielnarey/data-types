@@ -3,7 +3,7 @@
 ## Usage
 
 ```
-const { checkSync, checkAsync } = require('data-types');
+const { checkSync, checkAsync, convert } = require('data-types');
 ```
 
 ## Test Functions
