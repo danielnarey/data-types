@@ -52,7 +52,7 @@ const isPrototypeArray = type => async (promise) => {
 
 // EXPOSED: MODULE, PACKAGE
 // [*] => promise<boolean>
-const isAnyTypedArray = promise => {
+const isAnyTypedArray = async (promise) => {
   const bufferTypes = [
     'Int8Array',
     'Uint8Array',
@@ -79,7 +79,7 @@ const isAnyTypedArray = promise => {
 
 // EXPOSED: MODULE, PACKAGE
 // [*] => promise<boolean>
-const isIntTypedArray = promise => {
+const isIntTypedArray = async (promise) => {
   const bufferTypes = [
     'Int8Array',
     'Uint8Array',
@@ -102,7 +102,7 @@ const isIntTypedArray = promise => {
 
 // EXPOSED: MODULE, PACKAGE
 // [*] => promise<boolean>
-const isUintTypedArray = promise => {
+const isUintTypedArray = async (promise) => {
   const bufferTypes = [
     'Uint8Array',
     'Uint8ClampedArray',
@@ -122,7 +122,7 @@ const isUintTypedArray = promise => {
 
 // EXPOSED: MODULE, PACKAGE
 // [*] => promise<boolean>
-const isFloatTypedArray = promise => {
+const isFloatTypedArray = async (promise) => {
   const bufferTypes = [
     'Float32Array',
     'Float64Array',
@@ -140,7 +140,7 @@ const isFloatTypedArray = promise => {
 
 // EXPOSED: MODULE, PACKAGE
 // [*] => promise<boolean>
-const isBigIntTypedArray = promise => {
+const isBigIntTypedArray = async (promise) => {
   const bufferTypes = [
     'BigInt64Array',
     'BigUint64Array',
