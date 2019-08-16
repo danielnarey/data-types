@@ -6,7 +6,7 @@ const str = 'apple';
 const num = 1.1;
 const bool = true;
 const symb = Symbol('apple');
-const date = Date.now();
+const date = new Date('1999-1-1');
 const rexp = new RegExp('\\w+');
 const func = () => 'apple';
 const obj = { a: 'apple', b: 'banana' };
