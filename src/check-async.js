@@ -1,6 +1,6 @@
 //---TYPE CHECKING WITH PROMISES---//
 
-const { whatType } = require('./type-check-sync');
+const { whatType } = require('./check-sync');
 
 
 // INTERNAL

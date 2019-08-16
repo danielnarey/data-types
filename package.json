@@ -16,7 +16,7 @@
   "author": "Daniel C. Narey",
   "license": "MIT",
   "engines": {
-    "node": ">=8"
+    "node": ">=10"
   },
   "dependencies": {
   },

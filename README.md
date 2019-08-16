@@ -1,45 +1,33 @@
 # data-types
 
-whatType
+**checkSync** and **checkAsync**:
+- isString
+- isNumber
+- isBoolean
+- isSymbol
+- isDate
+- isRegExp
+- isFunction
+- isObject
+- isArray
+- isSet
+- isMap
+- isWeakSet
+- isWeakMap
+- isStringArray
+- isNumberArray
+- isBooleanArray
+- isDateArray
+- isFunctionArray
+- isObjectArray
+- isTypedArray
+- isIntTypedArray
+- isUintTypedArray
+- isFloatTypedArray
+- isBigIntTypedArray
 
-resolveWhatType
+**checkSync** only:
+- whatType
 
----
-
-isPrimitive
-
-isPrimitiveArray
-
-isTypedArray
-
-resolveIsPrimitive
-
-resolveIsPrimitiveArray
-
-resolveIsTypedArray
-
----
-
-toString
-
-toNumber
-
-toBoolean
-
-toDate
-
-toPrimitiveArray
-
-toTypedArray
-
-resolve_toString
-
-resolve_toNumber
-
-resolve_toBoolean
-
-resolve_toDate
-
-resolve_toPrimitiveArray
-
-resolve_toTypedArray
+**checkAsync** only:
+- isRejected

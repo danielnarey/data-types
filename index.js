@@ -1,13 +1,8 @@
-const checkSync = require('./src/type-check-sync');
-const typeConvert = require('./src/type-convert');
-const dataImport = require('./src/data-import');
-const dataExport = require('./src/data-export');
-const dataTransform = require('./src/data-transform');
+const checkSync = require('./src/check-sync');
+const checkAsync = require('./src/check-async');
 
 
 module.exports = {
   checkSync,
   checkAsync,
-  convertSync,
-  convertAsync,
 };

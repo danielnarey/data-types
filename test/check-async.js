@@ -1,5 +1,5 @@
 import test from 'ava';
-import checkAsync from '../src/type-check-async';
+import checkAsync from '../src/check-async';
 
 // prototype test values
 const str = 'apple';
