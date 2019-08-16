@@ -71,6 +71,24 @@ const pBigIntArr = Promise.resolve(bigIntArr);
 
 //---TESTS---//
 
+test('isRejected', async (t) => {
+  t.true(await checkAsync.isRejected(pReject));
+  
+  t.false(await checkAsync.isRejected(str));
+  t.false(await checkAsync.isRejected(pStr));
+  
+  // test once
+  t.false(await checkAsync.isRejected(obj));
+  t.false(await checkAsync.isRejected(pObj));
+  
+  t.false(await checkAsync.isRejected(nll));
+  t.false(await checkAsync.isRejected(pNll));
+  
+  t.false(await checkAsync.isRejected(undef));
+  t.false(await checkAsync.isRejected(pUndef));
+});
+
+
 test('isString', async (t) => {
   t.true(await checkAsync.isString(str));
   t.true(await checkAsync.isString(pStr));
