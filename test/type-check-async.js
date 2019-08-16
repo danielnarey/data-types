@@ -60,7 +60,7 @@ const pEmptyArray = Promise.resolve(emptyArray);
 const intArr = new Int8Array([-2, -1, 0]);
 const uintArr = new Uint8Array([0, 1, 2]);
 const floatArr = new Float32Array([0.1, 0.2, 0.3]);
-const bigIntArr = new BigInt64Array([10n, 20n, 30n]);
+const bigIntArr = new BigInt64Array([BigInt(19007199254740991), BigInt(9007199254740992), BigInt(9007199254740993)]);
 
 // promised typed array test values
 const pIntArr = Promise.resolve(intArr);
