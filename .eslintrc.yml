@@ -14,5 +14,4 @@ plugins:
   - ava
 
 rules:
-  no-console: off
   types/assign-type: error

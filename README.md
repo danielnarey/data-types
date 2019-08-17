@@ -1,13 +1,15 @@
-# data-types
+# @danielnarey/data-types
+
+**Simple type checking and conversion for standard JS data types**
 
 ## Usage
 
-CommonJS `require`: 
+CommonJS: 
 ```
 const { checkSync, checkAsync, convertSync, convertAsync } = require('data-types');
 ```
 
-ES6 import (with Babel):
+ES6/Babel:
 ```
 import { checkSync, checkAsync, convertSync, convertAsync } from 'data-types';
 ```
