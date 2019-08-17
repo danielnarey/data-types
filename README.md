@@ -62,7 +62,7 @@ The intermediate function `toBoolean`...
 
 The intermediate function `toDate`...
 
-For the `convertSync` version, the returned function takes only one argument - the value to be converted. For the `convertAsync` version, the returned function takes two arguments - the value to be converted and a default value to return if the argument is a rejected promise. When a default value is not specified, a rejected promise will return the intermediate function's default for `undefined` and `null` (indicated above).
+For the `convertSync` version, the returned function takes only one argument - the value to be converted. For the `convertAsync` version, the returned function takes two arguments - the value to be converted and a default value to return if the argument is a promise that rejects. When a default value is not specified, a rejected promise will return the intermediate function's default for `undefined` and `null` (indicated above).
 
 Included in **convertSync** and **convertAsync**:
 - `toString`
