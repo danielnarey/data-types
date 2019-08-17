@@ -27,18 +27,18 @@ const arr = [
 ];
 
 test('toString', (t) => {
-  const valueMap = new Map([
-    ['apple', 'fruit'],
-    ['banana', 'fruit'],
-    [NaN, '?'],
-    [false, '0'],
-  ]);
-  
   const typeMap = new Map([
     ['Undefined', ''],
     ['Null', ''],
     ['Boolean', '1'],
     ['Function', '!'],
+  ]);
+  
+  const valueMap = new Map([
+    ['apple', 'fruit'],
+    ['banana', 'fruit'],
+    [NaN, '?'],
+    [false, '0'],
   ]);
   
   const f = convertSync.toString(valueMap, typeMap);
@@ -60,7 +60,7 @@ test('toString', (t) => {
     '0.2',
     '?',
     '1',
-    '0',
+    '1',
     '',
     '',
     '{}',
