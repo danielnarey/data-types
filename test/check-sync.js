@@ -41,7 +41,7 @@ const strArray = ['apple', 'orange', 'pear'];
 const numArray = [1.1, 1.2, 1.3];
 const boolArray = [true, true, false];
 const dateArray = [new Date('1985-1-4'), new Date('1987-3-10'), new Date('1992-12-17')];
-const funcArray = [() => 'apple', (n) => 1.1 + n, (b) => !b];
+const funcArray = [() => 'apple', n => 1.1 + n, b => !b];
 const objArray = [{ fruit: 'apple', color: 'green' }, { fruit: 'banana', color: 'yellow' }];
 const emptyArray = [];
 
@@ -68,148 +68,148 @@ const pFloatArr = Promise.resolve(floatArr);
 const pBigIntArr = Promise.resolve(bigIntArr);
 
 
-//---TESTS---//
+// ---TESTS---//
 
-test('isString', t => {
+test('isString', (t) => {
   t.true(checkSync.isString(str));
   t.false(checkSync.isString(pStr));
-  
+
   t.false(checkSync.isString(num));
   t.false(checkSync.isString(pNum));
-  
+
   // test once
   t.false(checkSync.isString(obj));
   t.false(checkSync.isString(pObj));
-  
+
   t.false(checkSync.isString(nll));
   t.false(checkSync.isString(pNll));
-  
+
   t.false(checkSync.isString(undef));
   t.false(checkSync.isString(pUndef));
 });
 
 
-test('isNumber', t => {
+test('isNumber', (t) => {
   t.true(checkSync.isNumber(num));
   t.false(checkSync.isNumber(pNum));
-  
+
   t.false(checkSync.isNumber(str));
   t.false(checkSync.isNumber(pStr));
 });
 
 
-test('isBoolean', t => {
+test('isBoolean', (t) => {
   t.true(checkSync.isBoolean(bool));
   t.false(checkSync.isBoolean(pBool));
-  
+
   t.false(checkSync.isBoolean(str));
   t.false(checkSync.isBoolean(pStr));
 });
 
 
-test('isSymbol', t => {
+test('isSymbol', (t) => {
   t.true(checkSync.isSymbol(symb));
   t.false(checkSync.isSymbol(pSymb));
-  
+
   t.false(checkSync.isSymbol(str));
   t.false(checkSync.isSymbol(pStr));
 });
 
 
-test('isDate', t => {
+test('isDate', (t) => {
   t.true(checkSync.isDate(date));
   t.false(checkSync.isDate(pDate));
-  
+
   t.false(checkSync.isDate(str));
   t.false(checkSync.isDate(pStr));
 });
 
 
-test('isRegExp', t => {
+test('isRegExp', (t) => {
   t.true(checkSync.isRegExp(rexp));
   t.false(checkSync.isRegExp(pRexp));
-  
+
   t.false(checkSync.isRegExp(func));
   t.false(checkSync.isRegExp(pFunc));
 });
 
 
-test('isFunction', t => {
+test('isFunction', (t) => {
   t.true(checkSync.isFunction(func));
   t.false(checkSync.isFunction(pFunc));
-  
+
   t.false(checkSync.isFunction(obj));
   t.false(checkSync.isFunction(pObj));
 });
 
 
-test('isObject', t => {
+test('isObject', (t) => {
   t.true(checkSync.isObject(obj));
   t.false(checkSync.isObject(pObj));
-  
+
   t.false(checkSync.isObject(func));
   t.false(checkSync.isObject(pFunc));
 });
 
 
-test('isArray', t => {
+test('isArray', (t) => {
   t.true(checkSync.isArray(arr));
   t.false(checkSync.isArray(pArr));
-  
+
   t.false(checkSync.isArray(obj));
   t.false(checkSync.isArray(pObj));
 });
 
 
-test('isSet', t => {
+test('isSet', (t) => {
   t.true(checkSync.isSet(set));
   t.false(checkSync.isSet(pSet));
-  
+
   t.false(checkSync.isSet(arr));
   t.false(checkSync.isSet(pArr));
 });
 
 
-test('isMap', t => {
+test('isMap', (t) => {
   t.true(checkSync.isMap(map));
   t.false(checkSync.isMap(pMap));
-  
+
   t.false(checkSync.isMap(arr));
   t.false(checkSync.isMap(pArr));
 });
 
 
-test('isWeakSet', t => {
+test('isWeakSet', (t) => {
   t.true(checkSync.isWeakSet(wset));
   t.false(checkSync.isWeakSet(pWset));
-  
+
   t.false(checkSync.isWeakSet(set));
   t.false(checkSync.isWeakSet(pSet));
 });
 
 
-test('isWeakMap', t => {
+test('isWeakMap', (t) => {
   t.true(checkSync.isWeakMap(wmap));
   t.false(checkSync.isWeakMap(pWmap));
-  
+
   t.false(checkSync.isWeakMap(map));
   t.false(checkSync.isWeakMap(pMap));
 });
 
 
-test('isStringArray', t => {
+test('isStringArray', (t) => {
   t.true(checkSync.isStringArray(strArray));
   t.false(checkSync.isStringArray(pStrArray));
-  
+
   t.false(checkSync.isStringArray(mixedArray));
   t.false(checkSync.isStringArray(pMixedArray));
-  
+
   // test once
   t.true(checkSync.isStringArray(emptyArray));
   t.false(checkSync.isStringArray(pEmptyArray));
-  
+
   t.false(checkSync.isStringArray(strArray.map(x => Promise.resolve(x))));
-  
+
   t.false(checkSync.isStringArray(obj));
   t.false(checkSync.isStringArray(pObj));
   t.false(checkSync.isStringArray(nll));
@@ -219,34 +219,34 @@ test('isStringArray', t => {
 });
 
 
-test('isNumberArray', t => {
+test('isNumberArray', (t) => {
   t.true(checkSync.isNumberArray(numArray));
   t.false(checkSync.isNumberArray(pNumArray));
-  
+
   t.false(checkSync.isNumberArray(mixedArray));
   t.false(checkSync.isNumberArray(pMixedArray));
 });
 
 
-test('isBooleanArray', t => {
+test('isBooleanArray', (t) => {
   t.true(checkSync.isBooleanArray(boolArray));
   t.false(checkSync.isBooleanArray(pBoolArray));
-  
+
   t.false(checkSync.isBooleanArray(mixedArray));
   t.false(checkSync.isBooleanArray(pMixedArray));
 });
 
 
-test('isDateArray', t => {
+test('isDateArray', (t) => {
   t.true(checkSync.isDateArray(dateArray));
   t.false(checkSync.isDateArray(pDateArray));
-  
+
   t.false(checkSync.isDateArray(mixedArray));
   t.false(checkSync.isDateArray(pMixedArray));
 });
 
 
-test('isFunctionArray', t => {
+test('isFunctionArray', (t) => {
   t.true(checkSync.isFunctionArray(funcArray));
   t.false(checkSync.isFunctionArray(pFuncArray));
 
@@ -255,7 +255,7 @@ test('isFunctionArray', t => {
 });
 
 
-test('isObjectArray', t => {
+test('isObjectArray', (t) => {
   t.true(checkSync.isObjectArray(objArray));
   t.false(checkSync.isObjectArray(pObjArray));
 
@@ -264,7 +264,7 @@ test('isObjectArray', t => {
 });
 
 
-test('isTypedArray', t => {
+test('isTypedArray', (t) => {
   t.true(checkSync.isTypedArray(intArr));
   t.false(checkSync.isTypedArray(pIntArr));
   t.true(checkSync.isTypedArray(uintArr));
@@ -279,12 +279,12 @@ test('isTypedArray', t => {
 });
 
 
-test('isIntTypedArray', t => {
+test('isIntTypedArray', (t) => {
   t.true(checkSync.isIntTypedArray(intArr));
   t.false(checkSync.isIntTypedArray(pIntArr));
   t.true(checkSync.isIntTypedArray(uintArr));
   t.false(checkSync.isIntTypedArray(pUintArr));
-  
+
   t.false(checkSync.isIntTypedArray(floatArr));
   t.false(checkSync.isIntTypedArray(pFloatArr));
   t.false(checkSync.isIntTypedArray(bigIntArr));
@@ -295,10 +295,10 @@ test('isIntTypedArray', t => {
 });
 
 
-test('isUintTypedArray', t => {
+test('isUintTypedArray', (t) => {
   t.true(checkSync.isUintTypedArray(uintArr));
   t.false(checkSync.isUintTypedArray(pUintArr));
-  
+
   t.false(checkSync.isUintTypedArray(intArr));
   t.false(checkSync.isUintTypedArray(pIntArr));
   t.false(checkSync.isUintTypedArray(floatArr));
@@ -311,10 +311,10 @@ test('isUintTypedArray', t => {
 });
 
 
-test('isFloatTypedArray', t => {
+test('isFloatTypedArray', (t) => {
   t.true(checkSync.isFloatTypedArray(floatArr));
   t.false(checkSync.isFloatTypedArray(pFloatArr));
-  
+
   t.false(checkSync.isFloatTypedArray(intArr));
   t.false(checkSync.isFloatTypedArray(pIntArr));
   t.false(checkSync.isFloatTypedArray(uintArr));
@@ -327,10 +327,10 @@ test('isFloatTypedArray', t => {
 });
 
 
-test('isBigIntTypedArray', t => {
+test('isBigIntTypedArray', (t) => {
   t.true(checkSync.isBigIntTypedArray(bigIntArr));
   t.false(checkSync.isBigIntTypedArray(pBigIntArr));
-  
+
   t.false(checkSync.isBigIntTypedArray(intArr));
   t.false(checkSync.isBigIntTypedArray(pIntArr));
   t.false(checkSync.isBigIntTypedArray(uintArr));

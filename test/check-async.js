@@ -42,7 +42,7 @@ const strArray = ['apple', 'orange', 'pear'];
 const numArray = [1.1, 1.2, 1.3];
 const boolArray = [true, true, false];
 const dateArray = [new Date('1985-1-4'), new Date('1987-3-10'), new Date('1992-12-17')];
-const funcArray = [() => 'apple', (n) => 1.1 + n, (b) => !b];
+const funcArray = [() => 'apple', n => 1.1 + n, b => !b];
 const objArray = [{ fruit: 'apple', color: 'green' }, { fruit: 'banana', color: 'yellow' }];
 const emptyArray = [];
 
@@ -69,21 +69,21 @@ const pFloatArr = Promise.resolve(floatArr);
 const pBigIntArr = Promise.resolve(bigIntArr);
 
 
-//---TESTS---//
+// ---TESTS---//
 
 test('isRejected', async (t) => {
   t.true(await checkAsync.isRejected(pReject));
-  
+
   t.false(await checkAsync.isRejected(str));
   t.false(await checkAsync.isRejected(pStr));
-  
+
   // test once
   t.false(await checkAsync.isRejected(obj));
   t.false(await checkAsync.isRejected(pObj));
-  
+
   t.false(await checkAsync.isRejected(nll));
   t.false(await checkAsync.isRejected(pNll));
-  
+
   t.false(await checkAsync.isRejected(undef));
   t.false(await checkAsync.isRejected(pUndef));
 });
@@ -92,20 +92,20 @@ test('isRejected', async (t) => {
 test('isString', async (t) => {
   t.true(await checkAsync.isString(str));
   t.true(await checkAsync.isString(pStr));
-  
+
   t.false(await checkAsync.isString(num));
   t.false(await checkAsync.isString(pNum));
-  
+
   // test once
   t.false(await checkAsync.isString(obj));
   t.false(await checkAsync.isString(pObj));
-  
+
   t.false(await checkAsync.isString(nll));
   t.false(await checkAsync.isString(pNll));
-  
+
   t.false(await checkAsync.isString(undef));
   t.false(await checkAsync.isString(pUndef));
-  
+
   t.false(await checkAsync.isString(pReject));
 });
 
@@ -113,7 +113,7 @@ test('isString', async (t) => {
 test('isNumber', async (t) => {
   t.true(await checkAsync.isNumber(num));
   t.true(await checkAsync.isNumber(pNum));
-  
+
   t.false(await checkAsync.isNumber(str));
   t.false(await checkAsync.isNumber(pStr));
 });
@@ -122,7 +122,7 @@ test('isNumber', async (t) => {
 test('isBoolean', async (t) => {
   t.true(await checkAsync.isBoolean(bool));
   t.true(await checkAsync.isBoolean(pBool));
-  
+
   t.false(await checkAsync.isBoolean(str));
   t.false(await checkAsync.isBoolean(pStr));
 });
@@ -131,7 +131,7 @@ test('isBoolean', async (t) => {
 test('isSymbol', async (t) => {
   t.true(await checkAsync.isSymbol(symb));
   t.true(await checkAsync.isSymbol(pSymb));
-  
+
   t.false(await checkAsync.isSymbol(str));
   t.false(await checkAsync.isSymbol(pStr));
 });
@@ -140,7 +140,7 @@ test('isSymbol', async (t) => {
 test('isDate', async (t) => {
   t.true(await checkAsync.isDate(date));
   t.true(await checkAsync.isDate(pDate));
-  
+
   t.false(await checkAsync.isDate(str));
   t.false(await checkAsync.isDate(pStr));
 });
@@ -149,7 +149,7 @@ test('isDate', async (t) => {
 test('isRegExp', async (t) => {
   t.true(await checkAsync.isRegExp(rexp));
   t.true(await checkAsync.isRegExp(pRexp));
-  
+
   t.false(await checkAsync.isRegExp(func));
   t.false(await checkAsync.isRegExp(pFunc));
 });
@@ -158,7 +158,7 @@ test('isRegExp', async (t) => {
 test('isFunction', async (t) => {
   t.true(await checkAsync.isFunction(func));
   t.true(await checkAsync.isFunction(pFunc));
-  
+
   t.false(await checkAsync.isFunction(obj));
   t.false(await checkAsync.isFunction(pObj));
 });
@@ -167,7 +167,7 @@ test('isFunction', async (t) => {
 test('isObject', async (t) => {
   t.true(await checkAsync.isObject(obj));
   t.true(await checkAsync.isObject(pObj));
-  
+
   t.false(await checkAsync.isObject(func));
   t.false(await checkAsync.isObject(pFunc));
 });
@@ -176,7 +176,7 @@ test('isObject', async (t) => {
 test('isArray', async (t) => {
   t.true(await checkAsync.isArray(arr));
   t.true(await checkAsync.isArray(pArr));
-  
+
   t.false(await checkAsync.isArray(obj));
   t.false(await checkAsync.isArray(pObj));
 });
@@ -185,7 +185,7 @@ test('isArray', async (t) => {
 test('isSet', async (t) => {
   t.true(await checkAsync.isSet(set));
   t.true(await checkAsync.isSet(pSet));
-  
+
   t.false(await checkAsync.isSet(arr));
   t.false(await checkAsync.isSet(pArr));
 });
@@ -194,7 +194,7 @@ test('isSet', async (t) => {
 test('isMap', async (t) => {
   t.true(await checkAsync.isMap(map));
   t.true(await checkAsync.isMap(pMap));
-  
+
   t.false(await checkAsync.isMap(arr));
   t.false(await checkAsync.isMap(pArr));
 });
@@ -203,7 +203,7 @@ test('isMap', async (t) => {
 test('isWeakSet', async (t) => {
   t.true(await checkAsync.isWeakSet(wset));
   t.true(await checkAsync.isWeakSet(pWset));
-  
+
   t.false(await checkAsync.isWeakSet(set));
   t.false(await checkAsync.isWeakSet(pSet));
 });
@@ -212,7 +212,7 @@ test('isWeakSet', async (t) => {
 test('isWeakMap', async (t) => {
   t.true(await checkAsync.isWeakMap(wmap));
   t.true(await checkAsync.isWeakMap(pWmap));
-  
+
   t.false(await checkAsync.isWeakMap(map));
   t.false(await checkAsync.isWeakMap(pMap));
 });
@@ -221,16 +221,16 @@ test('isWeakMap', async (t) => {
 test('isStringArray', async (t) => {
   t.true(await checkAsync.isStringArray(strArray));
   t.true(await checkAsync.isStringArray(pStrArray));
-  
+
   t.false(await checkAsync.isStringArray(mixedArray));
   t.false(await checkAsync.isStringArray(pMixedArray));
-  
+
   // test once
   t.true(await checkAsync.isStringArray(emptyArray));
   t.true(await checkAsync.isStringArray(pEmptyArray));
-  
+
   t.false(await checkAsync.isStringArray(strArray.map(x => Promise.resolve(x))));
-  
+
   t.false(await checkAsync.isStringArray(obj));
   t.false(await checkAsync.isStringArray(pObj));
   t.false(await checkAsync.isStringArray(nll));
@@ -244,7 +244,7 @@ test('isStringArray', async (t) => {
 test('isNumberArray', async (t) => {
   t.true(await checkAsync.isNumberArray(numArray));
   t.true(await checkAsync.isNumberArray(pNumArray));
-  
+
   t.false(await checkAsync.isNumberArray(mixedArray));
   t.false(await checkAsync.isNumberArray(pMixedArray));
 });
@@ -253,7 +253,7 @@ test('isNumberArray', async (t) => {
 test('isBooleanArray', async (t) => {
   t.true(await checkAsync.isBooleanArray(boolArray));
   t.true(await checkAsync.isBooleanArray(pBoolArray));
-  
+
   t.false(await checkAsync.isBooleanArray(mixedArray));
   t.false(await checkAsync.isBooleanArray(pMixedArray));
 });
@@ -262,7 +262,7 @@ test('isBooleanArray', async (t) => {
 test('isDateArray', async (t) => {
   t.true(await checkAsync.isDateArray(dateArray));
   t.true(await checkAsync.isDateArray(pDateArray));
-  
+
   t.false(await checkAsync.isDateArray(mixedArray));
   t.false(await checkAsync.isDateArray(pMixedArray));
 });
@@ -306,7 +306,7 @@ test('isIntTypedArray', async (t) => {
   t.true(await checkAsync.isIntTypedArray(pIntArr));
   t.true(await checkAsync.isIntTypedArray(uintArr));
   t.true(await checkAsync.isIntTypedArray(pUintArr));
-  
+
   t.false(await checkAsync.isIntTypedArray(floatArr));
   t.false(await checkAsync.isIntTypedArray(pFloatArr));
   t.false(await checkAsync.isIntTypedArray(bigIntArr));
@@ -320,7 +320,7 @@ test('isIntTypedArray', async (t) => {
 test('isUintTypedArray', async (t) => {
   t.true(await checkAsync.isUintTypedArray(uintArr));
   t.true(await checkAsync.isUintTypedArray(pUintArr));
-  
+
   t.false(await checkAsync.isUintTypedArray(intArr));
   t.false(await checkAsync.isUintTypedArray(pIntArr));
   t.false(await checkAsync.isUintTypedArray(floatArr));
@@ -336,7 +336,7 @@ test('isUintTypedArray', async (t) => {
 test('isFloatTypedArray', async (t) => {
   t.true(await checkAsync.isFloatTypedArray(floatArr));
   t.true(await checkAsync.isFloatTypedArray(pFloatArr));
-  
+
   t.false(await checkAsync.isFloatTypedArray(intArr));
   t.false(await checkAsync.isFloatTypedArray(pIntArr));
   t.false(await checkAsync.isFloatTypedArray(uintArr));
@@ -352,7 +352,7 @@ test('isFloatTypedArray', async (t) => {
 test('isBigIntTypedArray', async (t) => {
   t.true(await checkAsync.isBigIntTypedArray(bigIntArr));
   t.true(await checkAsync.isBigIntTypedArray(pBigIntArr));
-  
+
   t.false(await checkAsync.isBigIntTypedArray(intArr));
   t.false(await checkAsync.isBigIntTypedArray(pIntArr));
   t.false(await checkAsync.isBigIntTypedArray(uintArr));
