@@ -70,7 +70,7 @@ const pBigIntArr = Promise.resolve(bigIntArr);
 
 //---TESTS---//
 
-test('isString', async (t) => {
+test('isString', t => {
   t.true(checkSync.isString(str));
   t.false(checkSync.isString(pStr));
   
@@ -89,7 +89,7 @@ test('isString', async (t) => {
 });
 
 
-test('isNumber', async (t) => {
+test('isNumber', t => {
   t.true(checkSync.isNumber(num));
   t.false(checkSync.isNumber(pNum));
   
@@ -98,7 +98,7 @@ test('isNumber', async (t) => {
 });
 
 
-test('isBoolean', async (t) => {
+test('isBoolean', t => {
   t.true(checkSync.isBoolean(bool));
   t.false(checkSync.isBoolean(pBool));
   
@@ -107,7 +107,7 @@ test('isBoolean', async (t) => {
 });
 
 
-test('isSymbol', async (t) => {
+test('isSymbol', t => {
   t.true(checkSync.isSymbol(symb));
   t.false(checkSync.isSymbol(pSymb));
   
@@ -116,7 +116,7 @@ test('isSymbol', async (t) => {
 });
 
 
-test('isDate', async (t) => {
+test('isDate', t => {
   t.true(checkSync.isDate(date));
   t.false(checkSync.isDate(pDate));
   
@@ -125,7 +125,7 @@ test('isDate', async (t) => {
 });
 
 
-test('isRegExp', async (t) => {
+test('isRegExp', t => {
   t.true(checkSync.isRegExp(rexp));
   t.false(checkSync.isRegExp(pRexp));
   
@@ -134,7 +134,7 @@ test('isRegExp', async (t) => {
 });
 
 
-test('isFunction', async (t) => {
+test('isFunction', t => {
   t.true(checkSync.isFunction(func));
   t.false(checkSync.isFunction(pFunc));
   
@@ -143,7 +143,7 @@ test('isFunction', async (t) => {
 });
 
 
-test('isObject', async (t) => {
+test('isObject', t => {
   t.true(checkSync.isObject(obj));
   t.false(checkSync.isObject(pObj));
   
@@ -152,7 +152,7 @@ test('isObject', async (t) => {
 });
 
 
-test('isArray', async (t) => {
+test('isArray', t => {
   t.true(checkSync.isArray(arr));
   t.false(checkSync.isArray(pArr));
   
@@ -161,7 +161,7 @@ test('isArray', async (t) => {
 });
 
 
-test('isSet', async (t) => {
+test('isSet', t => {
   t.true(checkSync.isSet(set));
   t.false(checkSync.isSet(pSet));
   
@@ -170,7 +170,7 @@ test('isSet', async (t) => {
 });
 
 
-test('isMap', async (t) => {
+test('isMap', t => {
   t.true(checkSync.isMap(map));
   t.false(checkSync.isMap(pMap));
   
@@ -179,7 +179,7 @@ test('isMap', async (t) => {
 });
 
 
-test('isWeakSet', async (t) => {
+test('isWeakSet', t => {
   t.true(checkSync.isWeakSet(wset));
   t.false(checkSync.isWeakSet(pWset));
   
@@ -188,7 +188,7 @@ test('isWeakSet', async (t) => {
 });
 
 
-test('isWeakMap', async (t) => {
+test('isWeakMap', t => {
   t.true(checkSync.isWeakMap(wmap));
   t.false(checkSync.isWeakMap(pWmap));
   
@@ -197,7 +197,7 @@ test('isWeakMap', async (t) => {
 });
 
 
-test('isStringArray', async (t) => {
+test('isStringArray', t => {
   t.true(checkSync.isStringArray(strArray));
   t.false(checkSync.isStringArray(pStrArray));
   
@@ -219,7 +219,7 @@ test('isStringArray', async (t) => {
 });
 
 
-test('isNumberArray', async (t) => {
+test('isNumberArray', t => {
   t.true(checkSync.isNumberArray(numArray));
   t.false(checkSync.isNumberArray(pNumArray));
   
@@ -228,7 +228,7 @@ test('isNumberArray', async (t) => {
 });
 
 
-test('isBooleanArray', async (t) => {
+test('isBooleanArray', t => {
   t.true(checkSync.isBooleanArray(boolArray));
   t.false(checkSync.isBooleanArray(pBoolArray));
   
@@ -237,7 +237,7 @@ test('isBooleanArray', async (t) => {
 });
 
 
-test('isDateArray', async (t) => {
+test('isDateArray', t => {
   t.true(checkSync.isDateArray(dateArray));
   t.false(checkSync.isDateArray(pDateArray));
   
@@ -246,7 +246,7 @@ test('isDateArray', async (t) => {
 });
 
 
-test('isFunctionArray', async (t) => {
+test('isFunctionArray', t => {
   t.true(checkSync.isFunctionArray(funcArray));
   t.false(checkSync.isFunctionArray(pFuncArray));
 
@@ -255,7 +255,7 @@ test('isFunctionArray', async (t) => {
 });
 
 
-test('isObjectArray', async (t) => {
+test('isObjectArray', t => {
   t.true(checkSync.isObjectArray(objArray));
   t.false(checkSync.isObjectArray(pObjArray));
 
@@ -264,7 +264,7 @@ test('isObjectArray', async (t) => {
 });
 
 
-test('isTypedArray', async (t) => {
+test('isTypedArray', t => {
   t.true(checkSync.isTypedArray(intArr));
   t.false(checkSync.isTypedArray(pIntArr));
   t.true(checkSync.isTypedArray(uintArr));
@@ -279,7 +279,7 @@ test('isTypedArray', async (t) => {
 });
 
 
-test('isIntTypedArray', async (t) => {
+test('isIntTypedArray', t => {
   t.true(checkSync.isIntTypedArray(intArr));
   t.false(checkSync.isIntTypedArray(pIntArr));
   t.true(checkSync.isIntTypedArray(uintArr));
@@ -295,7 +295,7 @@ test('isIntTypedArray', async (t) => {
 });
 
 
-test('isUintTypedArray', async (t) => {
+test('isUintTypedArray', t => {
   t.true(checkSync.isUintTypedArray(uintArr));
   t.false(checkSync.isUintTypedArray(pUintArr));
   
@@ -311,7 +311,7 @@ test('isUintTypedArray', async (t) => {
 });
 
 
-test('isFloatTypedArray', async (t) => {
+test('isFloatTypedArray', t => {
   t.true(checkSync.isFloatTypedArray(floatArr));
   t.false(checkSync.isFloatTypedArray(pFloatArr));
   
@@ -327,7 +327,7 @@ test('isFloatTypedArray', async (t) => {
 });
 
 
-test('isBigIntTypedArray', async (t) => {
+test('isBigIntTypedArray', t => {
   t.true(checkSync.isBigIntTypedArray(bigIntArr));
   t.false(checkSync.isBigIntTypedArray(pBigIntArr));
   
