@@ -43,7 +43,7 @@ test('toString', (t) => {
   
   const f = convertSync.toString(valueMap, typeMap);
     
-  t.deepEqual(f(arr), [
+  t.deepEqual(arr.map(f), [
     '',
     'fruit',
     'fruit',
