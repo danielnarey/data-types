@@ -19,7 +19,7 @@
     "node": ">=10"
   },
   "dependencies": {
-    "@arr/every": "^1.0.0",
+    "@arr/every": "^1.0.0"
   },
   "devDependencies": {
     "ava": "^2.2.0",
@@ -31,6 +31,6 @@
     "np": "^5.0.3"
   },
   "publishConfig": {
-    "access": "public",
+    "access": "public"
   }
 }
