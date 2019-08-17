@@ -6,9 +6,9 @@ const { isRejected } = require('./check-async');
 
 // EXPOSED: MODULE, PACKAGE
 // [Map], [Map] => *, string => string
-const toString = (valueMap = null, typeMap = new Map([['Undefined', ''], ['Null', '']])) => async (promise, default = '') => {
+const toString = (valueMap = null, typeMap = new Map([['Undefined', ''], ['Null', '']])) => async (promise, defaultValue = '') => {
   if (isRejected(promise)) {
-    return default;
+    return defaultValue;
   }
   
   const value = await promise;
@@ -32,9 +32,9 @@ const toString = (valueMap = null, typeMap = new Map([['Undefined', ''], ['Null'
 
 // EXPOSED: MODULE, PACKAGE
 // [Map], [Map] => * => number
-const toNumber = (valueMap = null, typeMap = new Map([['Undefined', NaN], ['Null', NaN]])) => async (value, default = NaN) => {
+const toNumber = (valueMap = null, typeMap = new Map([['Undefined', NaN], ['Null', NaN]])) => async (promise, defaultValue = NaN) => {
   if (isRejected(promise)) {
-    return default;
+    return defaultValue;
   }
   
   const value = await promise;
@@ -54,9 +54,9 @@ const toNumber = (valueMap = null, typeMap = new Map([['Undefined', NaN], ['Null
 
 // EXPOSED: MODULE, PACKAGE
 // [function], [Map] => * => boolean
-const toBoolean = (test = Boolean, typeMap = new Map([['Undefined', false], ['Null', false]])) => async (value, default = false) => {
+const toBoolean = (test = Boolean, typeMap = new Map([['Undefined', false], ['Null', false]])) => async (promise, defaultValue = false) => {
   if (isRejected(promise)) {
-    return default;
+    return defaultValue;
   }
   
   const value = await promise;
@@ -72,9 +72,9 @@ const toBoolean = (test = Boolean, typeMap = new Map([['Undefined', false], ['Nu
 
 // EXPOSED: MODULE, PACKAGE
 // [function], [Map] => * => Date
-const toDate = (parser = x => new Date(x), typeMap = new Map([['Undefined', new Date(NaN)], ['Null', new Date(NaN)]])) => async (value, default = new Date(NaN)) => {
+const toDate = (parser = x => new Date(x), typeMap = new Map([['Undefined', new Date(NaN)], ['Null', new Date(NaN)]])) => async (promise, defaultValue = new Date(NaN)) => {
   if (isRejected(promise)) {
-    return default;
+    return defaultValue;
   }
   
   const value = await promise;

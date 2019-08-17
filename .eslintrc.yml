@@ -3,7 +3,7 @@ extends:
   - plugin:ava/recommended
 
 parserOptions:
-  ecmaVersion: 2017
+  ecmaVersion: 2019
   sourceType: module
 
 env:
@@ -16,4 +16,3 @@ plugins:
 rules:
   no-console: off
   types/assign-type: error
-  types/array-type: error
