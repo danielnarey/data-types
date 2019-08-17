@@ -1,7 +1,7 @@
 const checkSync = require('./src/check-sync');
 const checkAsync = require('./src/check-async');
 const convertSync = require('./src/convert-sync');
-const convertAync = require('./src/convert-async');
+const convertAsync = require('./src/convert-async');
 
 
 module.exports = {
