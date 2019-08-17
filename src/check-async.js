@@ -1,10 +1,10 @@
-//---TYPE CHECKING WITH PROMISES---//
+//---ASYNCHRONOUS TYPE CHECKING ON PROMISED VALUES---//
 
 const { whatType } = require('./check-sync');
 
 
-// INTERNAL
-// [*] => promise<boolean>
+// EXPOSED: MODULE, PACKAGE
+// *|promise<*> => promise<boolean>
 const isRejected = async (promise) => {
   if (whatType(promise) !== 'Promise') {
     return false;
@@ -21,7 +21,7 @@ const isRejected = async (promise) => {
 
 
 // INTERNAL
-// string => [*] => promise<boolean>
+// string => *|promise<*> => promise<boolean>
 const isPrototype = type => async (promise) => {
   try {
     const value = await promise;
@@ -34,7 +34,7 @@ const isPrototype = type => async (promise) => {
 
 
 // INTERNAL
-// [*] => promise<boolean>
+// *|promise<*> => promise<boolean>
 const isPrototypeArray = type => async (promise) => {
   try {
     const array = await promise;
@@ -51,7 +51,7 @@ const isPrototypeArray = type => async (promise) => {
 
 
 // EXPOSED: MODULE, PACKAGE
-// [*] => promise<boolean>
+// *|promise<*> => promise<boolean>
 const isTypedArray = async (promise) => {
   const bufferTypes = [
     'Int8Array',
@@ -78,7 +78,7 @@ const isTypedArray = async (promise) => {
 
 
 // EXPOSED: MODULE, PACKAGE
-// [*] => promise<boolean>
+// *|promise<*> => promise<boolean>
 const isIntTypedArray = async (promise) => {
   const bufferTypes = [
     'Int8Array',
@@ -101,7 +101,7 @@ const isIntTypedArray = async (promise) => {
 
 
 // EXPOSED: MODULE, PACKAGE
-// [*] => promise<boolean>
+// *|promise<*> => promise<boolean>
 const isUintTypedArray = async (promise) => {
   const bufferTypes = [
     'Uint8Array',
@@ -121,7 +121,7 @@ const isUintTypedArray = async (promise) => {
 
 
 // EXPOSED: MODULE, PACKAGE
-// [*] => promise<boolean>
+// *|promise<*> => promise<boolean>
 const isFloatTypedArray = async (promise) => {
   const bufferTypes = [
     'Float32Array',
@@ -139,7 +139,7 @@ const isFloatTypedArray = async (promise) => {
 
 
 // EXPOSED: MODULE, PACKAGE
-// [*] => promise<boolean>
+// *|promise<*> => promise<boolean>
 const isBigIntTypedArray = async (promise) => {
   const bufferTypes = [
     'BigInt64Array',

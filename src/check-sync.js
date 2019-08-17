@@ -1,7 +1,7 @@
-//---BASIC TYPE CHECKING---//
+//---BASIC (SYNCHRONOUS) TYPE CHECKING---//
 
 // INTERNAL
-// [*] => string
+// * => string
 const whatType = (value) => {
   if (value === undefined) {
     return 'Undefined';
@@ -16,7 +16,7 @@ const whatType = (value) => {
 
 
 // INTERNAL
-// [*] => boolean
+// * => boolean
 const isPrototype = type => value => {
   try {
     return whatType(value) === type;
@@ -27,7 +27,7 @@ const isPrototype = type => value => {
 
 
 // INTERNAL
-// [*] => boolean
+// * => boolean
 const isPrototypeArray = type => array => {
   try {
     if (whatType(array) !== 'Array') {
@@ -42,7 +42,7 @@ const isPrototypeArray = type => array => {
  
 
 // EXPOSED: MODULE, PACKAGE
-// [*] => boolean
+// * => boolean
 const isTypedArray = obj => {
   const bufferTypes = [
     'Int8Array',
@@ -67,7 +67,7 @@ const isTypedArray = obj => {
 
 
 // EXPOSED: MODULE, PACKAGE
-// [*] => boolean
+// * => boolean
 const isIntTypedArray = obj => {
   const bufferTypes = [
     'Int8Array',
@@ -88,7 +88,7 @@ const isIntTypedArray = obj => {
 
 
 // EXPOSED: MODULE, PACKAGE
-// [*] => boolean
+// * => boolean
 const isUintTypedArray = obj => {
   const bufferTypes = [
     'Uint8Array',
@@ -106,7 +106,7 @@ const isUintTypedArray = obj => {
 
 
 // EXPOSED: MODULE, PACKAGE
-// [*] => boolean
+// * => boolean
 const isFloatTypedArray = obj => {
   const bufferTypes = [
     'Float32Array',
@@ -122,7 +122,7 @@ const isFloatTypedArray = obj => {
 
 
 // EXPOSED: MODULE, PACKAGE
-// [*] => boolean
+// * => boolean
 const isBigIntTypedArray = obj => {
   const bufferTypes = [
     'BigInt64Array',

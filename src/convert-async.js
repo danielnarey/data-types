@@ -1,11 +1,17 @@
-//---CONVERT A SINGLE VALUE TO STRING, NUMBER, BOOLEAN, OR DATE---//
+//---ASYNCHRONOUS CONVERSION OF A PROMISED PRIMITIVE TO A STRING, NUMBER, BOOLEAN, OR DATE---//
 
 const { whatType } = require('./check-sync');
+const { isRejected } = require('./check-async');
 
 
 // EXPOSED: MODULE, PACKAGE
-// [Map], [Map] => * => string
-const toString = (valueMap = null, typeMap = new Map([['Undefined', ''], ['Null', '']]) => value => {
+// [Map], [Map] => *, string => string
+const toString = (valueMap = null, typeMap = new Map([['Undefined', ''], ['Null', '']])) => async (promise, default = '') => {
+  if (isRejected(promise)) {
+    return default;
+  }
+  
+  const value = await promise;
   const valueType = whatType(value);
   
   if (typeMap.has(valueType)) {
@@ -26,7 +32,12 @@ const toString = (valueMap = null, typeMap = new Map([['Undefined', ''], ['Null'
 
 // EXPOSED: MODULE, PACKAGE
 // [Map], [Map] => * => number
-const toNumber = (valueMap = null, typeMap = new Map([['Undefined', NaN], ['Null', NaN]]) => value => {
+const toNumber = (valueMap = null, typeMap = new Map([['Undefined', NaN], ['Null', NaN]])) => async (value, default = NaN) => {
+  if (isRejected(promise)) {
+    return default;
+  }
+  
+  const value = await promise;
   const valueType = whatType(value);
   
   if (typeMap.has(valueType)) {
@@ -43,7 +54,12 @@ const toNumber = (valueMap = null, typeMap = new Map([['Undefined', NaN], ['Null
 
 // EXPOSED: MODULE, PACKAGE
 // [function], [Map] => * => boolean
-const toBoolean = (test = Boolean, typeMap = new Map([['Undefined', false], ['Null', false]]) => value => {
+const toBoolean = (test = Boolean, typeMap = new Map([['Undefined', false], ['Null', false]])) => async (value, default = false) => {
+  if (isRejected(promise)) {
+    return default;
+  }
+  
+  const value = await promise;
   const valueType = whatType(value);
   
   if (typeMap.has(valueType)) {
@@ -56,7 +72,12 @@ const toBoolean = (test = Boolean, typeMap = new Map([['Undefined', false], ['Nu
 
 // EXPOSED: MODULE, PACKAGE
 // [function], [Map] => * => Date
-const toDate = (parser = x => new Date(x), typeMap = new Map([['Undefined', new Date(NaN)], ['Null', new Date(NaN)]]) => value => {
+const toDate = (parser = x => new Date(x), typeMap = new Map([['Undefined', new Date(NaN)], ['Null', new Date(NaN)]])) => async (value, default = new Date(NaN)) => {
+  if (isRejected(promise)) {
+    return default;
+  }
+  
+  const value = await promise;
   const valueType = whatType(value);
   
   if (typeMap.has(valueType)) {
