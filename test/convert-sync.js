@@ -26,6 +26,9 @@ const arr = [
   () => {},
 ];
 
+
+//---TESTS---//
+
 test('toString', (t) => {
   const typeMap = new Map([
     ['Undefined', ''],
@@ -42,8 +45,8 @@ test('toString', (t) => {
   ]);
   
   const f = convertSync.toString(valueMap, typeMap);
-    
-  t.deepEqual(arr.map(f), [
+  
+  const expected = [
     '',
     'fruit',
     'fruit',
@@ -65,5 +68,53 @@ test('toString', (t) => {
     '',
     '{}',
     '!',
+  ];
+    
+  t.deepEqual(arr.map(f), expected); 
+});
+
+
+test('toNumber', (t) => {
+  const typeMap = new Map([
+    ['Undefined', NaN],
+    ['Null', NaN],
+    ['Object', -1],
+    ['Function', -1],
   ]);
+  
+  const valueMap = new Map([
+    ['apple', 10],
+    ['banana', 20],
+    [0.1, 1],
+    [0.2, 2],
+    [false, -1],
+  ]);
+  
+  const f = convertSync.toString(valueMap, typeMap);
+  
+  const expected = [
+    0,
+    10,
+    20,
+    1,
+    2,
+    0.1,
+    0.2,
+    NaN,
+    NaN,
+    NaN,
+    1,
+    2,
+    0.1,
+    0.2,
+    NaN,
+    1,
+    0,
+    NaN,
+    NaN,
+    -1,
+    -1,
+  ];
+    
+  t.deepEqual(arr.map(f), expected);
 });
