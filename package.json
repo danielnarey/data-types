@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "sync": "git add . && git commit -m 'automated sync' && git push",
-    "test": "eslint '**/*.js' && ava"
+    "test": "eslint index.js src/*.js && ava"
   },
   "repository": {
     "type": "git",
