@@ -1,4 +1,4 @@
-//---ASYNCHRONOUS TYPE CHECKING ON PROMISED VALUES---//
+// ---ASYNCHRONOUS TYPE CHECKING ON PROMISED VALUES---//
 
 const { whatType } = require('./check-sync');
 
@@ -9,10 +9,10 @@ const isRejected = async (promise) => {
   if (whatType(promise) !== 'Promise') {
     return false;
   }
-  
+
   try {
     await promise;
-    
+
     return false;
   } catch {
     return true;
@@ -25,7 +25,7 @@ const isRejected = async (promise) => {
 const isPrototype = type => async (promise) => {
   try {
     const value = await promise;
-    
+
     return whatType(value) === type;
   } catch {
     return false;
@@ -38,11 +38,11 @@ const isPrototype = type => async (promise) => {
 const isPrototypeArray = type => async (promise) => {
   try {
     const array = await promise;
-  
+
     if (whatType(array) !== 'Array') {
       return false;
     }
-  
+
     return array.every(x => whatType(x) === type);
   } catch {
     return false;
@@ -66,10 +66,10 @@ const isTypedArray = async (promise) => {
     'BigInt64Array',
     'BigUint64Array',
   ];
-  
+
   try {
     const obj = await promise;
-    
+
     return bufferTypes.includes(whatType(obj));
   } catch {
     return false;
@@ -89,10 +89,10 @@ const isIntTypedArray = async (promise) => {
     'Int32Array',
     'Uint32Array',
   ];
-  
+
   try {
     const obj = await promise;
-    
+
     return bufferTypes.includes(whatType(obj));
   } catch {
     return false;
@@ -109,10 +109,10 @@ const isUintTypedArray = async (promise) => {
     'Uint16Array',
     'Uint32Array',
   ];
-  
+
   try {
     const obj = await promise;
-    
+
     return bufferTypes.includes(whatType(obj));
   } catch {
     return false;
@@ -127,10 +127,10 @@ const isFloatTypedArray = async (promise) => {
     'Float32Array',
     'Float64Array',
   ];
-  
+
   try {
     const obj = await promise;
-    
+
     return bufferTypes.includes(whatType(obj));
   } catch {
     return false;
@@ -145,10 +145,10 @@ const isBigIntTypedArray = async (promise) => {
     'BigInt64Array',
     'BigUint64Array',
   ];
-  
+
   try {
     const obj = await promise;
-    
+
     return bufferTypes.includes(whatType(obj));
   } catch {
     return false;

@@ -1,4 +1,4 @@
-//---BASIC (SYNCHRONOUS) TYPE CHECKING---//
+// ---BASIC (SYNCHRONOUS) TYPE CHECKING---//
 
 // INTERNAL
 // * => string
@@ -17,7 +17,7 @@ const whatType = (value) => {
 
 // INTERNAL
 // * => boolean
-const isPrototype = type => value => {
+const isPrototype = type => (value) => {
   try {
     return whatType(value) === type;
   } catch {
@@ -28,22 +28,22 @@ const isPrototype = type => value => {
 
 // INTERNAL
 // * => boolean
-const isPrototypeArray = type => array => {
+const isPrototypeArray = type => (array) => {
   try {
     if (whatType(array) !== 'Array') {
       return false;
     }
-  
+
     return array.every(x => whatType(x) === type);
   } catch {
     return false;
   }
 };
- 
+
 
 // EXPOSED: MODULE, PACKAGE
 // * => boolean
-const isTypedArray = obj => {
+const isTypedArray = (obj) => {
   const bufferTypes = [
     'Int8Array',
     'Uint8Array',
@@ -57,7 +57,7 @@ const isTypedArray = obj => {
     'BigInt64Array',
     'BigUint64Array',
   ];
-  
+
   try {
     return bufferTypes.includes(whatType(obj));
   } catch {
@@ -68,7 +68,7 @@ const isTypedArray = obj => {
 
 // EXPOSED: MODULE, PACKAGE
 // * => boolean
-const isIntTypedArray = obj => {
+const isIntTypedArray = (obj) => {
   const bufferTypes = [
     'Int8Array',
     'Uint8Array',
@@ -78,7 +78,7 @@ const isIntTypedArray = obj => {
     'Int32Array',
     'Uint32Array',
   ];
-  
+
   try {
     return bufferTypes.includes(whatType(obj));
   } catch {
@@ -89,14 +89,14 @@ const isIntTypedArray = obj => {
 
 // EXPOSED: MODULE, PACKAGE
 // * => boolean
-const isUintTypedArray = obj => {
+const isUintTypedArray = (obj) => {
   const bufferTypes = [
     'Uint8Array',
     'Uint8ClampedArray',
     'Uint16Array',
     'Uint32Array',
   ];
-  
+
   try {
     return bufferTypes.includes(whatType(obj));
   } catch {
@@ -107,12 +107,12 @@ const isUintTypedArray = obj => {
 
 // EXPOSED: MODULE, PACKAGE
 // * => boolean
-const isFloatTypedArray = obj => {
+const isFloatTypedArray = (obj) => {
   const bufferTypes = [
     'Float32Array',
     'Float64Array',
   ];
-  
+
   try {
     return bufferTypes.includes(whatType(obj));
   } catch {
@@ -123,12 +123,12 @@ const isFloatTypedArray = obj => {
 
 // EXPOSED: MODULE, PACKAGE
 // * => boolean
-const isBigIntTypedArray = obj => {
+const isBigIntTypedArray = (obj) => {
   const bufferTypes = [
     'BigInt64Array',
     'BigUint64Array',
   ];
-  
+
   try {
     return bufferTypes.includes(whatType(obj));
   } catch {

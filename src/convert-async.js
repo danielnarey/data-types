@@ -1,4 +1,4 @@
-//---ASYNCHRONOUS CONVERSION OF A PROMISED PRIMITIVE TO A STRING, NUMBER, BOOLEAN, OR DATE---//
+// ---ASYNCHRONOUS CONVERSION OF A PROMISED PRIMITIVE TO A STRING, NUMBER, BOOLEAN, OR DATE---//
 
 const { whatType } = require('./check-sync');
 const { isRejected } = require('./check-async');
@@ -10,22 +10,22 @@ const toString = (valueMap = null, typeMap = new Map([['Undefined', ''], ['Null'
   if (isRejected(promise)) {
     return defaultValue;
   }
-  
+
   const value = await promise;
   const valueType = whatType(value);
-  
+
   if (typeMap.has(valueType)) {
-    return typeMap.get(valueType);  
+    return typeMap.get(valueType);
   }
-  
+
   if (valueMap && valueMap.has(value)) {
     return valueMap.get(value);
   }
-    
+
   if (valueType === 'String') {
     return value;
   }
-  
+
   return JSON.stringify(value);
 };
 
@@ -36,18 +36,18 @@ const toNumber = (valueMap = null, typeMap = new Map([['Undefined', NaN], ['Null
   if (isRejected(promise)) {
     return defaultValue;
   }
-  
+
   const value = await promise;
   const valueType = whatType(value);
-  
+
   if (typeMap.has(valueType)) {
-    return typeMap.get(valueType);  
+    return typeMap.get(valueType);
   }
-  
+
   if (valueMap && valueMap.has(value)) {
     return valueMap.get(value);
   }
-  
+
   return Number(value);
 };
 
@@ -58,14 +58,14 @@ const toBoolean = (test = Boolean, typeMap = new Map([['Undefined', false], ['Nu
   if (isRejected(promise)) {
     return defaultValue;
   }
-  
+
   const value = await promise;
   const valueType = whatType(value);
-  
+
   if (typeMap.has(valueType)) {
-    return typeMap.get(valueType);  
+    return typeMap.get(valueType);
   }
-  
+
   return test(value);
 };
 
@@ -76,14 +76,14 @@ const toDate = (parser = x => new Date(x), typeMap = new Map([['Undefined', new 
   if (isRejected(promise)) {
     return defaultValue;
   }
-  
+
   const value = await promise;
   const valueType = whatType(value);
-  
+
   if (typeMap.has(valueType)) {
-    return typeMap.get(valueType);  
+    return typeMap.get(valueType);
   }
-  
+
   return parser(value);
 };
 
