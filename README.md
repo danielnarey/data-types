@@ -97,14 +97,17 @@ Parameters for **convertAsync** version:
 
 - a `Map` that maps individual values of any input type to result values
 - ignored (set to `null`) by default
+- note that type mappings override value mappings
 
 **test** (toBoolean)
 - a function that accepts any value and returns `true` or `false`
 - defaults to the built-in `Boolean` function, which returns `true` if the value is truthy and false otherwise
+- note that type mappings override test return values
 
 **parser** (toDate)
 - a function that accepts a string or number and return a `Date`
-- defaults to `x => new Date(x)`.
+- defaults to `x => new Date(x)`
+- note that type mappings override parser return values
 
 **defaultValue** (convertAsync versions)
 - a default value to return if the argument is a promise that rejects
