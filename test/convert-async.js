@@ -34,7 +34,7 @@ test('toString', async (t) => {
 });
 
 
-test('toNumber', (t) => {
+test('toNumber', async (t) => {
   const typeMap = new Map([
     ['Undefined', NaN],
     ['Null', NaN],
@@ -60,7 +60,7 @@ test('toNumber', (t) => {
 });
 
 
-test('toBoolean', (t) => {
+test('toBoolean', async (t) => {
   const typeMap = new Map([
     ['Undefined', false],
     ['Null', false],
@@ -80,7 +80,7 @@ test('toBoolean', (t) => {
 });
 
 
-test('toDate', (t) => {
+test('toDate', async (t) => {
   const typeMap = new Map([
     ['Undefined', new Date(NaN)],
     ['Null', new Date(NaN)],
