@@ -27,7 +27,7 @@ const arr = [
 ];
 
 
-//---TESTS---//
+// ---TESTS---//
 
 test('toString', (t) => {
   const typeMap = new Map([
@@ -36,16 +36,16 @@ test('toString', (t) => {
     ['Boolean', '1'],
     ['Function', '!'],
   ]);
-  
+
   const valueMap = new Map([
     ['apple', 'fruit'],
     ['banana', 'fruit'],
     [NaN, '?'],
     [false, '0'],
   ]);
-  
+
   const f = convertSync.toString(typeMap)(valueMap);
-  
+
   const expected = [
     '',
     'fruit',
@@ -69,8 +69,8 @@ test('toString', (t) => {
     '{}',
     '!',
   ];
-    
-  t.deepEqual(arr.map(f), expected); 
+
+  t.deepEqual(arr.map(f), expected);
 });
 
 
@@ -81,7 +81,7 @@ test('toNumber', (t) => {
     ['Object', -1],
     ['Function', -1],
   ]);
-  
+
   const valueMap = new Map([
     ['apple', 10],
     ['banana', 20],
@@ -89,9 +89,9 @@ test('toNumber', (t) => {
     [0.2, 2],
     [false, -1],
   ]);
-  
+
   const f = convertSync.toNumber(typeMap)(valueMap);
-  
+
   const expected = [
     0,
     10,
@@ -115,7 +115,7 @@ test('toNumber', (t) => {
     -1,
     -1,
   ];
-    
+
   t.deepEqual(arr.map(f), expected);
 });
 
@@ -127,9 +127,9 @@ test('toBoolean', (t) => {
     ['Object', false],
     ['Function', false],
   ]);
-  
+
   const f = convertSync.toBoolean(typeMap)();
-  
+
   const expected = [
     false,
     true,
@@ -153,7 +153,7 @@ test('toBoolean', (t) => {
     false,
     false,
   ];
-    
+
   t.deepEqual(arr.map(f), expected);
 });
 
@@ -165,9 +165,9 @@ test('toDate', (t) => {
     ['Object', new Date(NaN)],
     ['Function', new Date(NaN)],
   ]);
-  
+
   const f = convertSync.toDate(typeMap)();
-  
+
   const arr = [
     '1999-1-1',
     '1999-1-3',
@@ -178,7 +178,7 @@ test('toDate', (t) => {
     {},
     () => {},
   ];
-  
+
   const expected = [
     new Date('1999-1-1'),
     new Date('1999-1-3'),
@@ -189,6 +189,6 @@ test('toDate', (t) => {
     new Date(NaN),
     new Date(NaN),
   ];
-    
+
   t.deepEqual(arr.map(f), expected);
 });

@@ -6,7 +6,7 @@ import convertAsync from '../src/convert-async';
 const pReject = Promise.reject(new Error('Fail'));
 
 
-//---TESTS---//
+// ---TESTS---//
 
 test('toString', async (t) => {
   const typeMap = new Map([
@@ -15,14 +15,14 @@ test('toString', async (t) => {
     ['Boolean', '1'],
     ['Function', '!'],
   ]);
-  
+
   const valueMap = new Map([
     ['apple', 'fruit'],
     [NaN, '?'],
   ]);
-  
+
   const f = x => convertAsync.toString(typeMap)(valueMap)('ERROR')(Promise.resolve(x));
-    
+
   t.is(await f('apple'), 'fruit');
   t.is(await f('banana'), 'banana');
   t.is(await f(1), '1');
@@ -40,15 +40,15 @@ test('toNumber', async (t) => {
     ['Null', NaN],
     ['Function', -1],
   ]);
-  
+
   const valueMap = new Map([
     ['apple', 10],
     [0.1, 1.1],
     [false, -1],
   ]);
-  
+
   const f = x => convertAsync.toNumber(typeMap)(valueMap)(-999)(Promise.resolve(x));
-  
+
   t.is(await f('apple'), 10);
   t.is(await f('banana'), NaN);
   t.is(await f('1'), 1);
@@ -67,9 +67,9 @@ test('toBoolean', async (t) => {
     ['Object', false],
     ['Function', false],
   ]);
-  
+
   const f = x => convertAsync.toBoolean(typeMap)()()(Promise.resolve(x));
-  
+
   t.is(await f('apple'), true);
   t.is(await f(0), false);
   t.is(await f(0.1), true);
@@ -87,9 +87,9 @@ test('toDate', async (t) => {
     ['Object', new Date(NaN)],
     ['Function', new Date(NaN)],
   ]);
-  
+
   const f = x => convertAsync.toDate(typeMap)()()(Promise.resolve(x));
-  
+
   t.deepEqual(await f('1999-1-1'), new Date('1999-1-1'));
   t.deepEqual(await f(1), new Date(1));
   t.deepEqual(await f(null), new Date(NaN));
