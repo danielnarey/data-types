@@ -128,19 +128,10 @@ test('toBoolean', (t) => {
     ['Function', false],
   ]);
   
-  const valueMap = new Map([
-    ['apple', false],
-    ['banana', false],
-    [0.1, false],
-    [0.2, false],
-  ]);
-  
-  const f = convertSync.toBoolean(valueMap, typeMap);
+  const f = convertSync.toBoolean(Boolean, typeMap);
   
   const expected = [
     false,
-    false,
-    false,
     true,
     true,
     true,
@@ -150,8 +141,10 @@ test('toBoolean', (t) => {
     true,
     true,
     true,
-    false,
-    false,
+    true,
+    true,
+    true,
+    true,
     false,
     true,
     false,
