@@ -135,7 +135,7 @@ test('toBoolean', (t) => {
     [0.2, false],
   ]);
   
-  const f = convertSync.ToBoolean(valueMap, typeMap);
+  const f = convertSync.toBoolean(valueMap, typeMap);
   
   const expected = [
     false,
