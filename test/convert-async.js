@@ -24,10 +24,11 @@ const arr = [
   {}.a,
   {},
   () => {},
-  Promise.reject(new Error('Fail')),
 ];
 
-const promisify = array => array.map(x => Promise.resolve(x));
+const pArr = arr.map(x => Promise.resolve(x));
+
+const pReject = Promise.reject(new Error('Fail'));
 
 
 //---TESTS---//
@@ -71,13 +72,13 @@ test('toString', async (t) => {
     '',
     '{}',
     '!',
-    'ERROR',
   ];
     
-  t.deepEqual(await Promise.all(promisify(arr).map(f)), expected);
+  t.deepEqual(await Promise.all(pArr.map(f)), expected);
+  t.deepEqual(await f(pReject), 'ERROR');
 });
 
-
+/*
 test('toNumber', (t) => {
   const typeMap = new Map([
     ['Undefined', NaN],
@@ -200,3 +201,4 @@ test('toDate', (t) => {
     
   t.deepEqual(promisify(arr).map(f), promisify(expected));
 });
+*/
