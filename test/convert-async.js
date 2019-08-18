@@ -90,11 +90,11 @@ test('toDate', async (t) => {
   
   const f = x => convertAsync.toDate(typeMap)()()(Promise.resolve(x));
   
-  t.is(await f('1999-1-1'), new Date('1999-1-1'));
-  t.is(await f(1), new Date(1));
-  t.is(await f(null), new Date(NaN));
-  t.is(await f({}.a), new Date(NaN));
-  t.is(await f({}), new Date(NaN));
-  t.is(await f(() => {}), new Date(NaN));
-  t.is(await f(pReject), new Date(NaN));
+  t.deepEqual(await f('1999-1-1'), new Date('1999-1-1'));
+  t.deepEqual(await f(1), new Date(1));
+  t.deepEqual(await f(null), new Date(NaN));
+  t.deepEqual(await f({}.a), new Date(NaN));
+  t.deepEqual(await f({}), new Date(NaN));
+  t.deepEqual(await f(() => {}), new Date(NaN));
+  t.deepEqual(await f(pReject), new Date(NaN));
 });
