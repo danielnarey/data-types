@@ -168,7 +168,7 @@ test('toDate', (t) => {
 
   const f = convertSync.toDate(typeMap)();
 
-  const arr = [
+  const dateArr = [
     '1999-1-1',
     '1999-1-3',
     0,
@@ -190,5 +190,5 @@ test('toDate', (t) => {
     new Date(NaN),
   ];
 
-  t.deepEqual(arr.map(f), expected);
+  t.deepEqual(dateArr.map(f), expected);
 });
