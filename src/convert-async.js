@@ -6,7 +6,7 @@ const { isRejected } = require('./check-async');
 
 // EXPOSED: MODULE, PACKAGE
 // [Map], [Map] => *, string => string
-const toString = (valueMap = null, typeMap = new Map([['Undefined', ''], ['Null', '']])) => async (promise, defaultValue = '') => {
+const toString = (valueMap = new Map(), typeMap = new Map([['Undefined', ''], ['Null', '']])) => async (promise, defaultValue = '') => {
   if (isRejected(promise)) {
     return defaultValue;
   }
@@ -18,7 +18,7 @@ const toString = (valueMap = null, typeMap = new Map([['Undefined', ''], ['Null'
     return typeMap.get(valueType);
   }
 
-  if (valueMap && valueMap.has(value)) {
+  if (valueMap.has(value)) {
     return valueMap.get(value);
   }
 
@@ -32,7 +32,7 @@ const toString = (valueMap = null, typeMap = new Map([['Undefined', ''], ['Null'
 
 // EXPOSED: MODULE, PACKAGE
 // [Map], [Map] => * => number
-const toNumber = (valueMap = null, typeMap = new Map([['Undefined', NaN], ['Null', NaN]])) => async (promise, defaultValue = NaN) => {
+const toNumber = (valueMap = new Map(), typeMap = new Map([['Undefined', NaN], ['Null', NaN]])) => async (promise, defaultValue = NaN) => {
   if (isRejected(promise)) {
     return defaultValue;
   }
@@ -44,7 +44,7 @@ const toNumber = (valueMap = null, typeMap = new Map([['Undefined', NaN], ['Null
     return typeMap.get(valueType);
   }
 
-  if (valueMap && valueMap.has(value)) {
+  if (valueMap.has(value)) {
     return valueMap.get(value);
   }
 

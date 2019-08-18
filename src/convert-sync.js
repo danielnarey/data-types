@@ -5,14 +5,14 @@ const { whatType } = require('./check-sync');
 
 // EXPOSED: MODULE, PACKAGE
 // [Map], [Map] => * => string
-const toString = (valueMap = null, typeMap = new Map([['Undefined', ''], ['Null', '']])) => (value) => {
+const toString = (valueMap = new Map(), typeMap = new Map([['Undefined', ''], ['Null', '']])) => (value) => {
   const valueType = whatType(value);
 
   if (typeMap.has(valueType)) {
     return typeMap.get(valueType);
   }
 
-  if (valueMap && valueMap.has(value)) {
+  if (valueMap.has(value)) {
     return valueMap.get(value);
   }
 
@@ -26,14 +26,14 @@ const toString = (valueMap = null, typeMap = new Map([['Undefined', ''], ['Null'
 
 // EXPOSED: MODULE, PACKAGE
 // [Map], [Map] => * => number
-const toNumber = (valueMap = null, typeMap = new Map([['Undefined', NaN], ['Null', NaN]])) => (value) => {
+const toNumber = (valueMap = new Map(), typeMap = new Map([['Undefined', NaN], ['Null', NaN]])) => (value) => {
   const valueType = whatType(value);
 
   if (typeMap.has(valueType)) {
     return typeMap.get(valueType);
   }
 
-  if (valueMap && valueMap.has(value)) {
+  if (valueMap.has(value)) {
     return valueMap.get(value);
   }
 

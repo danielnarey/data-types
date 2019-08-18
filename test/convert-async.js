@@ -21,16 +21,16 @@ test('toString', async (t) => {
     [NaN, '?'],
   ]);
   
-  const f = convertAsync.toString(valueMap, typeMap);
+  const f = x => convertAsync.toString(valueMap, typeMap)(Promise.resolve(x), 'ERROR');
     
-  t.true(f('apple', 'ERROR') === 'fruit');
-  t.true(f('banana', 'ERROR') === 'banana');
-  t.true(f(1, 'ERROR') === '1');
-  t.true(f(NaN, 'ERROR') === '?');
-  t.true(f({}.a, 'ERROR') === '');
-  t.true(f(false, 'ERROR') === '1');
-  t.true(f(() => {}, 'ERROR') === '!');
-  t.true(f(pReject, 'ERROR') === 'ERROR');
+  t.is(await f('apple'), 'fruit');
+  t.is(await f('banana'), 'banana');
+  t.is(await f(1), '1');
+  t.is(await f(NaN), '?');
+  t.is(await f({}.a), '');
+  t.is(await f(false), '1');
+  t.is(await f(() => {}), '!');
+  t.is(await f(pReject), 'ERROR');
 });
 
 /*
