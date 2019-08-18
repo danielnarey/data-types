@@ -44,7 +44,7 @@ test('toString', (t) => {
     [false, '0'],
   ]);
   
-  const f = convertSync.toString(valueMap, typeMap);
+  const f = convertSync.toString(typeMap)(valueMap);
   
   const expected = [
     '',
@@ -90,7 +90,7 @@ test('toNumber', (t) => {
     [false, -1],
   ]);
   
-  const f = convertSync.toNumber(valueMap, typeMap);
+  const f = convertSync.toString(typeMap)(valueMap);
   
   const expected = [
     0,
@@ -128,7 +128,7 @@ test('toBoolean', (t) => {
     ['Function', false],
   ]);
   
-  const f = convertSync.toBoolean(undefined, typeMap);
+  const f = convertSync.toBoolean(typeMap)();
   
   const expected = [
     false,
@@ -166,7 +166,7 @@ test('toDate', (t) => {
     ['Function', new Date(NaN)],
   ]);
   
-  const f = convertSync.toDate(undefined, typeMap);
+  const f = convertSync.toDate(typeMap)();
   
   const arr = [
     '1999-1-1',

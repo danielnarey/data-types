@@ -6,7 +6,7 @@ const { isRejected } = require('./check-async');
 
 // EXPOSED: MODULE, PACKAGE
 // [Map], [Map] => *, string => string
-const toString = (valueMap = null, typeMap = new Map([['Undefined', ''], ['Null', '']])) => async (promise, defaultValue = '') => {
+const toString = (typeMap = new Map([['Undefined', ''], ['Null', '']])) => (valueMap = null) => (defaultValue = '') => async (promise) => {
   if (await isRejected(promise)) {
     return defaultValue;
   }
@@ -32,7 +32,7 @@ const toString = (valueMap = null, typeMap = new Map([['Undefined', ''], ['Null'
 
 // EXPOSED: MODULE, PACKAGE
 // [Map], [Map] => * => number
-const toNumber = (valueMap = null, typeMap = new Map([['Undefined', NaN], ['Null', NaN]])) => async (promise, defaultValue = NaN) => {
+const toNumber = (typeMap = new Map([['Undefined', NaN], ['Null', NaN]])) => (valueMap = null) => (defaultValue = NaN) => async (promise) => {
   if (await isRejected(promise)) {
     return defaultValue;
   }
@@ -54,7 +54,7 @@ const toNumber = (valueMap = null, typeMap = new Map([['Undefined', NaN], ['Null
 
 // EXPOSED: MODULE, PACKAGE
 // [function], [Map] => * => boolean
-const toBoolean = (test = Boolean, typeMap = new Map([['Undefined', false], ['Null', false]])) => async (promise, defaultValue = false) => {
+const toBoolean = (typeMap = new Map([['Undefined', false], ['Null', false]])) => (test = Boolean) => (defaultValue = false) => async (promise) => {
   if (await isRejected(promise)) {
     return defaultValue;
   }
@@ -72,7 +72,7 @@ const toBoolean = (test = Boolean, typeMap = new Map([['Undefined', false], ['Nu
 
 // EXPOSED: MODULE, PACKAGE
 // [function], [Map] => * => Date
-const toDate = (parser = x => new Date(x), typeMap = new Map([['Undefined', new Date(NaN)], ['Null', new Date(NaN)]])) => async (promise, defaultValue = new Date(NaN)) => {
+const toDate = (typeMap = new Map([['Undefined', new Date(NaN)], ['Null', new Date(NaN)]])) => (parser = x => new Date(x)) => (defaultValue = new Date(NaN)) => async (promise) => {
   if (await isRejected(promise)) {
     return defaultValue;
   }

@@ -5,7 +5,7 @@ const { whatType } = require('./check-sync');
 
 // EXPOSED: MODULE, PACKAGE
 // [Map], [Map] => * => string
-const toString = (valueMap = null, typeMap = new Map([['Undefined', ''], ['Null', '']])) => (value) => {
+const toString = (typeMap = new Map([['Undefined', ''], ['Null', '']])) => (valueMap = null) => (value) => {
   const valueType = whatType(value);
 
   if (typeMap.has(valueType)) {
@@ -26,7 +26,7 @@ const toString = (valueMap = null, typeMap = new Map([['Undefined', ''], ['Null'
 
 // EXPOSED: MODULE, PACKAGE
 // [Map], [Map] => * => number
-const toNumber = (valueMap = null, typeMap = new Map([['Undefined', NaN], ['Null', NaN]])) => (value) => {
+const toNumber = (typeMap = new Map([['Undefined', NaN], ['Null', NaN]])) => (valueMap = null) => (value) => {
   const valueType = whatType(value);
 
   if (typeMap.has(valueType)) {
@@ -43,7 +43,7 @@ const toNumber = (valueMap = null, typeMap = new Map([['Undefined', NaN], ['Null
 
 // EXPOSED: MODULE, PACKAGE
 // [function], [Map] => * => boolean
-const toBoolean = (test = Boolean, typeMap = new Map([['Undefined', false], ['Null', false]])) => (value) => {
+const toBoolean = (typeMap = new Map([['Undefined', false], ['Null', false]])) => (test = Boolean) => (value) => {
   const valueType = whatType(value);
 
   if (typeMap.has(valueType)) {
@@ -56,7 +56,7 @@ const toBoolean = (test = Boolean, typeMap = new Map([['Undefined', false], ['Nu
 
 // EXPOSED: MODULE, PACKAGE
 // [function], [Map] => * => Date
-const toDate = (parser = x => new Date(x), typeMap = new Map([['Undefined', new Date(NaN)], ['Null', new Date(NaN)]])) => (value) => {
+const toDate = (typeMap = new Map([['Undefined', new Date(NaN)], ['Null', new Date(NaN)]])) => (parser = x => new Date(x)) => (value) => {
   const valueType = whatType(value);
 
   if (typeMap.has(valueType)) {

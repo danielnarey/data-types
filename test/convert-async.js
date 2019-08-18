@@ -21,7 +21,7 @@ test('toString', async (t) => {
     [NaN, '?'],
   ]);
   
-  const f = x => convertAsync.toString(valueMap, typeMap)(Promise.resolve(x), 'ERROR');
+  const f = x => convertAsync.toString(typeMap)(valueMap)('ERROR')(Promise.resolve(x));
     
   t.is(await f('apple'), 'fruit');
   t.is(await f('banana'), 'banana');
@@ -33,51 +33,30 @@ test('toString', async (t) => {
   t.is(await f(pReject), 'ERROR');
 });
 
-/*
+
 test('toNumber', (t) => {
   const typeMap = new Map([
     ['Undefined', NaN],
     ['Null', NaN],
-    ['Object', -1],
     ['Function', -1],
   ]);
   
   const valueMap = new Map([
     ['apple', 10],
-    ['banana', 20],
-    [0.1, 1],
-    [0.2, 2],
+    [0.1, 1.1],
     [false, -1],
   ]);
   
-  const f = async (x) => await convertAsync.toNumber(valueMap, typeMap)(x, -999);
+  const f = x => convertAsync.toNumber(typeMap)(valueMap)(-999)(Promise.resolve(x));
   
-  const expected = [
-    0,
-    10,
-    20,
-    1,
-    2,
-    0.1,
-    0.2,
-    NaN,
-    NaN,
-    NaN,
-    1,
-    2,
-    1,
-    2,
-    NaN,
-    1,
-    -1,
-    NaN,
-    NaN,
-    -1,
-    -1,
-    -999,
-  ];
-    
-  t.deepEqual(promisify(arr).map(f), promisify(expected));
+  t.is(await f('apple'), 10);
+  t.is(await f('banana'), NaN);
+  t.is(await f('1'), 1);
+  t.is(await f(0.1), 1.1);
+  t.is(await f({}.a), NaN);
+  t.is(await f(false), -1);
+  t.is(await f(() => {}), -1);
+  t.is(await f(pReject), -999);
 });
 
 
@@ -89,34 +68,15 @@ test('toBoolean', (t) => {
     ['Function', false],
   ]);
   
-  const f = async (x) => await convertAsync.toBoolean(undefined, typeMap)(x, false);
+  const f = x => convertAsync.toBoolean(typeMap)()()(Promise.resolve(x));
   
-  const expected = [
-    false,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    false,
-    true,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-  ];
-    
-  t.deepEqual(promisify(arr).map(f), promisify(expected));
+  t.is(await f('apple'), true);
+  t.is(await f(0), false);
+  t.is(await f(0.1, true);
+  t.is(await f({}.a), false);
+  t.is(await f({}), false);
+  t.is(await f(() => {}), false);
+  t.is(await f(pReject), false);
 });
 
 
@@ -128,32 +88,13 @@ test('toDate', (t) => {
     ['Function', new Date(NaN)],
   ]);
   
-  const f = async (x) => await convertAsync.toDate(undefined, typeMap)(x, new Date(NaN));
+  const f = x => convertAsync.toDate(typeMap)()()(Promise.resolve(x));
   
-  const arr = [
-    '1999-1-1',
-    '1999-1-3',
-    0,
-    1,
-    null,
-    {}.a,
-    {},
-    () => {},
-    Promise.reject(new Error('Fail')),
-  ];
-  
-  const expected = [
-    new Date('1999-1-1'),
-    new Date('1999-1-3'),
-    new Date(0),
-    new Date(1),
-    new Date(NaN),
-    new Date(NaN),
-    new Date(NaN),
-    new Date(NaN),
-    new Date(NaN),
-  ];
-    
-  t.deepEqual(promisify(arr).map(f), promisify(expected));
+  t.is(await f('1999-1-1'), new Date('1999-1-1'));
+  t.is(await f(1), new Date(1));
+  t.is(await f(null), new Date(NaN));
+  t.is(await f({}.a), new Date(NaN));
+  t.is(await f({}), new Date(NaN));
+  t.is(await f(() => {}), new Date(NaN));
+  t.is(await f(pReject), new Date(NaN));
 });
-*/
