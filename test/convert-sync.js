@@ -90,7 +90,7 @@ test('toNumber', (t) => {
     [false, -1],
   ]);
   
-  const f = convertSync.toString(typeMap)(valueMap);
+  const f = convertSync.toNumber(typeMap)(valueMap);
   
   const expected = [
     0,
