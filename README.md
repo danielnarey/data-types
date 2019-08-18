@@ -67,7 +67,7 @@ The following curried functions allow the user to specify type and value mapping
 Included in **convertSync** and **convertAsync**:
 - `toString`: uses `JSON.stringify()` for unmapped values
 - `toNumber`: uses `Number()` for unmapped values
-- `toBoolean`: uses `Boolean()` as default test function
+- `toBoolean`: uses `Boolean()` as default test
 - `toDate`: uses `new Date()` as default parser
 
 ### Parameters and Defaults
