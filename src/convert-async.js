@@ -6,8 +6,8 @@ const { isRejected } = require('./check-async');
 
 // EXPOSED: MODULE, PACKAGE
 // [Map], [Map] => *, string => string
-const toString = (valueMap = new Map(), typeMap = new Map([['Undefined', ''], ['Null', '']])) => async (promise, defaultValue = '') => {
-  if (isRejected(promise)) {
+const toString = (valueMap = null, typeMap = new Map([['Undefined', ''], ['Null', '']])) => async (promise, defaultValue = '') => {
+  if (await isRejected(promise)) {
     return defaultValue;
   }
 
@@ -18,7 +18,7 @@ const toString = (valueMap = new Map(), typeMap = new Map([['Undefined', ''], ['
     return typeMap.get(valueType);
   }
 
-  if (valueMap.has(value)) {
+  if (valueMap && valueMap.has(value)) {
     return valueMap.get(value);
   }
 
@@ -32,8 +32,8 @@ const toString = (valueMap = new Map(), typeMap = new Map([['Undefined', ''], ['
 
 // EXPOSED: MODULE, PACKAGE
 // [Map], [Map] => * => number
-const toNumber = (valueMap = new Map(), typeMap = new Map([['Undefined', NaN], ['Null', NaN]])) => async (promise, defaultValue = NaN) => {
-  if (isRejected(promise)) {
+const toNumber = (valueMap = null, typeMap = new Map([['Undefined', NaN], ['Null', NaN]])) => async (promise, defaultValue = NaN) => {
+  if (await isRejected(promise)) {
     return defaultValue;
   }
 
@@ -44,7 +44,7 @@ const toNumber = (valueMap = new Map(), typeMap = new Map([['Undefined', NaN], [
     return typeMap.get(valueType);
   }
 
-  if (valueMap.has(value)) {
+  if (valueMap && valueMap.has(value)) {
     return valueMap.get(value);
   }
 
@@ -55,7 +55,7 @@ const toNumber = (valueMap = new Map(), typeMap = new Map([['Undefined', NaN], [
 // EXPOSED: MODULE, PACKAGE
 // [function], [Map] => * => boolean
 const toBoolean = (test = Boolean, typeMap = new Map([['Undefined', false], ['Null', false]])) => async (promise, defaultValue = false) => {
-  if (isRejected(promise)) {
+  if (await isRejected(promise)) {
     return defaultValue;
   }
 
@@ -73,7 +73,7 @@ const toBoolean = (test = Boolean, typeMap = new Map([['Undefined', false], ['Nu
 // EXPOSED: MODULE, PACKAGE
 // [function], [Map] => * => Date
 const toDate = (parser = x => new Date(x), typeMap = new Map([['Undefined', new Date(NaN)], ['Null', new Date(NaN)]])) => async (promise, defaultValue = new Date(NaN)) => {
-  if (isRejected(promise)) {
+  if (await isRejected(promise)) {
     return defaultValue;
   }
 
