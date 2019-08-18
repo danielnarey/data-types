@@ -128,7 +128,7 @@ test('toBoolean', (t) => {
     ['Function', false],
   ]);
   
-  const f = convertSync.toBoolean(Boolean, typeMap);
+  const f = convertSync.toBoolean(undefined, typeMap);
   
   const expected = [
     false,
@@ -152,6 +152,42 @@ test('toBoolean', (t) => {
     false,
     false,
     false,
+  ];
+    
+  t.deepEqual(arr.map(f), expected);
+});
+
+
+test('toDate', (t) => {
+  const typeMap = new Map([
+    ['Undefined', new Date(NaN)],
+    ['Null', new Date(NaN)],
+    ['Object', new Date(NaN)],
+    ['Function', new Date(NaN)],
+  ]);
+  
+  const f = convertSync.toDate(undefined, typeMap);
+  
+  const arr = [
+    '1999-1-1',
+    '1999-1-3',
+    0,
+    1,
+    null,
+    {}.a,
+    {},
+    () => {},
+  ];
+  
+  const expected = [
+    new Date('1999-1-1'),
+    new Date('1999-1-3'),
+    new Date(0),
+    new Date(1),
+    new Date(NaN),
+    new Date(NaN),
+    new Date(NaN),
+    new Date(NaN),
   ];
     
   t.deepEqual(arr.map(f), expected);
