@@ -1,5 +1,6 @@
 // ---ASYNCHRONOUS TYPE CHECKING ON PROMISED VALUES---//
 
+const every = require('@arr/every');
 const { whatType } = require('./check-sync');
 
 
@@ -43,7 +44,7 @@ const isPrototypeArray = type => async (promise) => {
       return false;
     }
 
-    return array.every(x => whatType(x) === type);
+    return every(array, x => whatType(x) === type);
   } catch {
     return false;
   }

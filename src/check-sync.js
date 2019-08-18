@@ -1,5 +1,7 @@
 // ---BASIC (SYNCHRONOUS) TYPE CHECKING---//
 
+const every = require('@arr/every');
+
 // INTERNAL
 // * => string
 const whatType = (value) => {
@@ -34,7 +36,7 @@ const isPrototypeArray = type => (array) => {
       return false;
     }
 
-    return array.every(x => whatType(x) === type);
+    return every(array, x => whatType(x) === type);
   } catch {
     return false;
   }
