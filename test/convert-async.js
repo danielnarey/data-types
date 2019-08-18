@@ -1,33 +1,8 @@
 import test from 'ava';
 import convertAsync from '../src/convert-async';
 
-// test array
-const arr = [
-  '',
-  'apple',
-  'banana',
-  '1',
-  '2',
-  '0.1',
-  '0.2',
-  'NaN',
-  'true',
-  'false',
-  1,
-  2,
-  0.1,
-  0.2,
-  NaN,
-  true,
-  false,
-  null,
-  {}.a,
-  {},
-  () => {},
-];
 
-const pArr = arr.map(x => Promise.resolve(x));
-
+// rejected promise test value
 const pReject = Promise.reject(new Error('Fail'));
 
 
@@ -43,39 +18,19 @@ test('toString', async (t) => {
   
   const valueMap = new Map([
     ['apple', 'fruit'],
-    ['banana', 'fruit'],
     [NaN, '?'],
-    [false, '0'],
   ]);
   
-  const f = x => convertAsync.toString(valueMap, typeMap)(x, 'ERROR');
-  
-  const expected = [
-    '',
-    'fruit',
-    'fruit',
-    '1',
-    '2',
-    '0.1',
-    '0.2',
-    'NaN',
-    'true',
-    'false',
-    '1',
-    '2',
-    '0.1',
-    '0.2',
-    '?',
-    '1',
-    '1',
-    '',
-    '',
-    '{}',
-    '!',
-  ];
+  const f = convertAsync.toString(valueMap, typeMap);
     
-  t.deepEqual(await Promise.all(pArr.map(f)), expected);
-  t.deepEqual(await f(pReject), 'ERROR');
+  t.true(f('apple', 'ERROR') === 'fruit');
+  t.true(f('banana', 'ERROR') === 'banana');
+  t.true(f(1, 'ERROR') === '1');
+  t.true(f(NaN, 'ERROR') === '?');
+  t.true(f({}.a, 'ERROR') === '');
+  t.true(f(false, 'ERROR') === '1');
+  t.true(f(() => {}, 'ERROR') === '!');
+  t.true(f(pReject, 'ERROR') === 'ERROR');
 });
 
 /*
