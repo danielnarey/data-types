@@ -32,7 +32,7 @@ const promisify = array => array.map(x => Promise.resolve(x));
 
 //---TESTS---//
 
-test('toString', (t) => {
+test('toString', async (t) => {
   const typeMap = new Map([
     ['Undefined', ''],
     ['Null', ''],
@@ -47,7 +47,7 @@ test('toString', (t) => {
     [false, '0'],
   ]);
   
-  const f = async (x) => await convertAsync.toString(valueMap, typeMap)(x, 'ERROR');
+  const f = x => convertAsync.toString(valueMap, typeMap)(x, 'ERROR');
   
   const expected = [
     '',
@@ -74,7 +74,7 @@ test('toString', (t) => {
     'ERROR',
   ];
     
-  t.deepEqual(promisify(arr).map(f), promisify(expected));
+  t.deepEqual(await Promise.all(promisify(arr).map(f)), expected);
 });
 
 
