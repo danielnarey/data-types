@@ -72,7 +72,7 @@ test('toBoolean', async (t) => {
   
   t.is(await f('apple'), true);
   t.is(await f(0), false);
-  t.is(await f(0.1, true);
+  t.is(await f(0.1), true);
   t.is(await f({}.a), false);
   t.is(await f({}), false);
   t.is(await f(() => {}), false);
