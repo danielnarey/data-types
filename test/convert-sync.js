@@ -118,3 +118,48 @@ test('toNumber', (t) => {
     
   t.deepEqual(arr.map(f), expected);
 });
+
+
+test('toBoolean', (t) => {
+  const typeMap = new Map([
+    ['Undefined', false],
+    ['Null', false],
+    ['Object', false],
+    ['Function', false],
+  ]);
+  
+  const valueMap = new Map([
+    ['apple', false],
+    ['banana', false],
+    [0.1, false],
+    [0.2, false],
+  ]);
+  
+  const f = convertSync.toNumber(valueMap, typeMap);
+  
+  const expected = [
+    false,
+    false,
+    false,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    false,
+    false,
+    false,
+    true,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ];
+    
+  t.deepEqual(arr.map(f), expected);
+});
