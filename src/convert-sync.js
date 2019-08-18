@@ -43,7 +43,7 @@ const toNumber = (valueMap = null, typeMap = new Map([['Undefined', NaN], ['Null
 
 // EXPOSED: MODULE, PACKAGE
 // [function], [Map] => * => boolean
-const toBoolean = (test = Boolean, typeMap = new Map([['Undefined', false], ['Null', false]])) => (value) => {
+const toBoolean = (test = x => Boolean(x), typeMap = new Map([['Undefined', false], ['Null', false]])) => (value) => {
   const valueType = whatType(value);
 
   if (typeMap.has(valueType)) {
