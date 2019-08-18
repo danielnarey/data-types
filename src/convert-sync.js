@@ -50,7 +50,7 @@ const toBoolean = (test = x => Boolean(x), typeMap = new Map([['Undefined', fals
     return typeMap.get(valueType);
   }
 
-  return test(value);
+  return Function.prototype.call(test, value);
 };
 
 
