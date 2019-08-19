@@ -19,7 +19,8 @@
     "promise",
     "resolve",
     "async",
-    "await"  
+    "await",
+    "functional"  
   ],
   "author": "Daniel C. Narey",
   "license": "MIT",
