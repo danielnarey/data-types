@@ -1,6 +1,6 @@
 {
   "name": "@danielnarey/data-types",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Simple type checking and conversion for standard JS data types",
   "main": "index.js",
   "scripts": {
@@ -20,7 +20,7 @@
     "resolve",
     "async",
     "await",
-    "functional"  
+    "functional"
   ],
   "author": "Daniel C. Narey",
   "license": "MIT",
