@@ -12,7 +12,15 @@
     "type": "git",
     "url": "https://github.com/danielnarey/data-types"
   },
-  "keywords": [],
+  "keywords": [
+    "type",
+    "checking",
+    "conversion",
+    "promise",
+    "resolve",
+    "async",
+    "await"  
+  ],
   "author": "Daniel C. Narey",
   "license": "MIT",
   "engines": {
