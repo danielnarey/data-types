@@ -17,12 +17,12 @@ The **checkSync** and **checkAsync** modules include type-checking functions for
 
 CommonJS `require`:
 ```
-const { checkSync, checkAsync } = require('data-types');
+const { checkSync, checkAsync } = require('@danielnarey/data-types');
 ```
 
 ES6 `import` (using Babel):
 ```
-import { checkSync, checkAsync } from 'data-types';
+import { checkSync, checkAsync } from '@danielnarey/data-types';
 ```
 
 ### API
@@ -78,12 +78,12 @@ The **convertSync** and **convertAsync** modules contain curried functions allow
 
 CommonJS `require`:
 ```
-const { convertSync, convertAsync } = require('data-types');
+const { convertSync, convertAsync } = require('@danielnarey/data-types');
 ```
 
 ES6 `import` (using Babel):
 ```
-import { convertSync, convertAsync } from 'data-types';
+import { convertSync, convertAsync } from '@danielnarey/data-types';
 ```
 
 ### API
@@ -150,12 +150,12 @@ The **types** module provides a way to access data type names (corresponding to 
 
 CommonJS `require`:
 ```
-const { types } = require('data-types');
+const { types } = require('@danielnarey/data-types');
 ```
 
 ES6 `import` (using Babel):
 ```
-import { types } from 'data-types';
+import { types } from '@danielnarey/data-types';
 ```
 
 ### API
