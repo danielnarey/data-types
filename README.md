@@ -1,4 +1,4 @@
-# @danielnarey/data-types [![Build Status](https://travis-ci.com/danielnarey/data-types.svg?branch=master)](https://travis-ci.com/danielnarey/data-types) ![npm (scoped)](https://img.shields.io/npm/v/@danielnarey/data-types)
+# @danielnarey/data-types [![Build Status](https://travis-ci.com/danielnarey/data-types.svg?branch=master)](https://travis-ci.com/danielnarey/data-types) [![npm (scoped)](https://img.shields.io/npm/v/@danielnarey/data-types)](https://www.npmjs.com/package/@danielnarey/data-types)
 
 **Simple type checking and conversion for standard JS data types**
 
