@@ -1,4 +1,4 @@
-//---OBJECT CONTAINING NAMES OF DATA TYPES---// 
+// ---OBJECT CONTAINING NAMES OF DATA TYPES---//
 
 module.exports = {
   String: 'String',
