@@ -1,0 +1,28 @@
+//---OBJECT CONTAINING NAMES OF DATA TYPES---// 
+
+module.exports = {
+  String: 'String',
+  Number: 'Number',
+  Boolean: 'Boolean',
+  Symbol: 'Symbol',
+  Date: 'Date',
+  RegExp: 'RegExp',
+  Function: 'Function',
+  Object: 'Object',
+  Array: 'Array',
+  Set: 'Set',
+  Map: 'Map',
+  WeakSet: 'WeakSet',
+  WeakMap: 'WeakMap',
+  StringArray: 'StringArray',
+  NumberArray: 'NumberArray',
+  BooleanArray: 'BooleanArray',
+  DateArray: 'DateArray',
+  FunctionArray: 'FunctionArray',
+  ObjectArray: 'ObjectArray',
+  TypedArray: 'TypedArray',
+  IntTypedArray: 'IntTypedArray',
+  UintTypedArray: 'UintTypedArray',
+  FloatTypedArray: 'FloatTypedArray',
+  BigIntTypedArray: 'BigIntTypedArray',
+};
