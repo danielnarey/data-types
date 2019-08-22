@@ -1,6 +1,6 @@
 {
   "name": "@danielnarey/data-types",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Simple type checking and conversion for standard JS data types",
   "main": "index.js",
   "scripts": {
