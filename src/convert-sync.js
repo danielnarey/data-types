@@ -56,7 +56,7 @@ const toBoolean = (typeMap = new Map([['Undefined', false], ['Null', false]])) =
 
 // EXPOSED: MODULE, PACKAGE
 // [function], [Map] => * => Date
-const toDate = (typeMap = new Map([['Undefined', new Date(NaN)], ['Null', new Date(NaN)]])) => (parser = x => new Date(x)) => (value) => {
+const toDate = (typeMap = new Map([['Undefined', new Date(NaN)], ['Null', new Date(NaN)]])) => (parser = (x) => new Date(x)) => (value) => {
   const valueType = whatType(value);
 
   if (typeMap.has(valueType)) {

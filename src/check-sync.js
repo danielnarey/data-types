@@ -19,7 +19,7 @@ const whatType = (value) => {
 
 // INTERNAL
 // * => boolean
-const isPrototype = type => (value) => {
+const isPrototype = (type) => (value) => {
   try {
     return whatType(value) === type;
   } catch {
@@ -30,13 +30,13 @@ const isPrototype = type => (value) => {
 
 // INTERNAL
 // * => boolean
-const isPrototypeArray = type => (array) => {
+const isPrototypeArray = (type) => (array) => {
   try {
     if (whatType(array) !== 'Array') {
       return false;
     }
 
-    return every(array, x => whatType(x) === type);
+    return every(array, (x) => whatType(x) === type);
   } catch {
     return false;
   }

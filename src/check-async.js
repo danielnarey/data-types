@@ -23,7 +23,7 @@ const isRejected = async (promise) => {
 
 // INTERNAL
 // string => *|promise<*> => promise<boolean>
-const isPrototype = type => async (promise) => {
+const isPrototype = (type) => async (promise) => {
   try {
     const value = await promise;
 
@@ -36,7 +36,7 @@ const isPrototype = type => async (promise) => {
 
 // INTERNAL
 // *|promise<*> => promise<boolean>
-const isPrototypeArray = type => async (promise) => {
+const isPrototypeArray = (type) => async (promise) => {
   try {
     const array = await promise;
 
@@ -44,7 +44,7 @@ const isPrototypeArray = type => async (promise) => {
       return false;
     }
 
-    return every(array, x => whatType(x) === type);
+    return every(array, (x) => whatType(x) === type);
   } catch {
     return false;
   }
