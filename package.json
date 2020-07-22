@@ -1,7 +1,7 @@
 {
   "name": "@danielnarey/data-types",
   "version": "0.2.2",
-  "description": "Simple type checking and conversion for standard JS data types",
+  "description": "[Deprecated] Simple type checking and conversion for standard JS data types",
   "main": "index.js",
   "scripts": {
     "release": "np",
@@ -12,16 +12,6 @@
     "type": "git",
     "url": "https://github.com/danielnarey/data-types"
   },
-  "keywords": [
-    "type",
-    "checking",
-    "conversion",
-    "promise",
-    "resolve",
-    "async",
-    "await",
-    "functional"
-  ],
   "author": "Daniel C. Narey",
   "license": "MIT",
   "engines": {
