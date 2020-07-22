@@ -1,6 +1,6 @@
 {
   "name": "@danielnarey/data-types",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "[Deprecated] Simple type checking and conversion for standard JS data types",
   "main": "index.js",
   "scripts": {
