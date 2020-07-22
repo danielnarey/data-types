@@ -2,9 +2,7 @@
 
 **\[Deprecated] Simple type checking and conversion for standard JS data types**
 
-## Deprecation Warning
-
-*This experimental library is no longer in active development and will not be updated in response to Node.js version releases or security vulnerabilities identified in the dependency tree.* 
+> **Deprecation Warning**: *This experimental library is no longer in active development and will not be updated in response to Node.js version  releases or security vulnerabilities identified in the dependency tree.* 
 
 ## Install
 
